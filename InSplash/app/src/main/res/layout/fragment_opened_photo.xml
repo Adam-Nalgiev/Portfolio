@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.openedPhoto.OpenedPhotoFragment">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/share"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center_vertical|end"
+        android:layout_margin="8dp"
+        android:clickable="true"
+        android:contentDescription="@string/share_button_description"
+        android:src="@drawable/icon_share"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/share" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/profile_image"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/image"
+        app:layout_constraintStart_toStartOf="@id/image" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/username"
+        style="@style/TextAppearance.AppCompat.SmallTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/roboto"
+        app:layout_constraintStart_toEndOf="@id/profile_image"
+        app:layout_constraintTop_toTopOf="@id/profile_image" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/login"
+        style="@style/TextAppearance.AppCompat.SmallTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/profile_image"
+        app:layout_constraintStart_toStartOf="@id/username"
+        app:layout_constraintTop_toBottomOf="@id/username" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/like_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
+        android:clickable="true"
+        android:contentDescription="@string/like_image_button_description"
+        app:layout_constraintBottom_toBottomOf="@id/image"
+        app:layout_constraintEnd_toEndOf="@id/image" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/likes"
+        style="@style/TextAppearance.AppCompat.SmallTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/like_button"
+        app:layout_constraintEnd_toStartOf="@id/like_button"
+        app:layout_constraintTop_toTopOf="@id/like_button" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/location_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/icon_location"
+        app:layout_constraintStart_toStartOf="@id/image"
+        app:layout_constraintTop_toBottomOf="@id/image" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/location"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@id/location_icon"
+        app:layout_constraintStart_toEndOf="@id/location_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tags"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/location" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/val_made_with"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/made_with"
+        app:layout_constraintStart_toEndOf="@id/made_with" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/val_model"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/model"
+        app:layout_constraintStart_toEndOf="@id/model" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/val_exposure"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/exposure"
+        app:layout_constraintStart_toEndOf="@id/exposure" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/val_aperture"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/aperture"
+        app:layout_constraintStart_toEndOf="@id/aperture" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/val_focal_length"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/focal_length"
+        app:layout_constraintStart_toEndOf="@id/focal_length" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/val_iso"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/iso"
+        app:layout_constraintStart_toEndOf="@id/iso" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/val_about"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/about"
+        app:layout_constraintStart_toEndOf="@+id/about" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/made_with"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/made_with"
+        app:layout_constraintStart_toStartOf="@id/tags"
+        app:layout_constraintTop_toBottomOf="@id/tags" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/model"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/model"
+        app:layout_constraintStart_toStartOf="@id/made_with"
+        app:layout_constraintTop_toBottomOf="@id/made_with" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/exposure"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/exposure"
+        app:layout_constraintStart_toStartOf="@id/model"
+        app:layout_constraintTop_toBottomOf="@id/model" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/aperture"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/aperture"
+        app:layout_constraintStart_toStartOf="@id/exposure"
+        app:layout_constraintTop_toBottomOf="@id/exposure" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/focal_length"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/focal_length"
+        app:layout_constraintStart_toStartOf="@id/aperture"
+        app:layout_constraintTop_toBottomOf="@id/aperture" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/iso"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/iso"
+        app:layout_constraintStart_toStartOf="@id/focal_length"
+        app:layout_constraintTop_toBottomOf="@id/focal_length" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/about"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about"
+        app:layout_constraintBottom_toBottomOf="@id/made_with"
+        app:layout_constraintEnd_toEndOf="@+id/tags"
+        app:layout_constraintStart_toEndOf="@id/made_with" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/description"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/about"
+        app:layout_constraintTop_toBottomOf="@id/about" />
+
+    <LinearLayout
+        android:id="@+id/download_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/description"
+        app:layout_constraintTop_toBottomOf="@+id/description">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/download"
+            style="@style/TextAppearance.AppCompat.BasicTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/download"
+            android:textSize="12sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/downloads"
+            style="@style/TextAppearance.AppCompat.BasicTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textSize="12sp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:src="@drawable/icon_download" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

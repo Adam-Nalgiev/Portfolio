@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search_request">Поиск</string>
+    <string name="log_in">Войти</string>
+    <string name="today_in_top">Сегодня в топе</string>
+    <string name="the_new">Новое</string>
+    <string name="no_liked_photos">Нет понравившихся фотографий</string>
+    <string name="exit_confirmation">Вы действительно хотите выйти? Все локальные данные будут удалены.</string>
+    <string name="cancel">Отмена</string>
+    <string name="exit">Выйти</string>
+    <string name="made_with">Сделано с:</string>
+    <string name="model">Модель:</string>
+    <string name="exposure">Экспозиция:</string>
+    <string name="aperture">Апертура:</string>
+    <string name="focal_length">Фокусное расстояние:</string>
+    <string name="iso">ISO:</string>
+    <string name="about">О фотографии:</string>
+    <string name="download">Скачать</string>
+    <string name="title_home">Главное</string>
+    <string name="title_collection">Коллекции</string>
+    <string name="title_profile">Профиль</string>
+
+    <string name="profile_image_description">Фотография профиля</string>
+    <string name="like_image_button_description">Лайкнуть фотографию</string>
+    <string name="top_image_description">Топовая фотография на сегодня</string>
+    <string name="exit_button_description">Выйти из аккаунта</string>
+    <string name="share_button_description">Поделиться</string>
+</resources>

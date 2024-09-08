@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/collectionsFragment"
+        android:name="com.pets.insplash.presentation.collections.CollectionsFragment"
+        android:label="@string/title_collection"
+        tools:layout="@layout/fragment_collections" >
+        <action
+            android:id="@+id/action_collectionsFragment_to_openedPhotoFragment"
+            app:destination="@id/openedPhotoFragment" />
+        <action
+            android:id="@+id/action_collectionsFragment_to_openedCollectionFragment"
+            app:destination="@id/openedCollectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.pets.insplash.presentation.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_openedPhotoFragment"
+            app:destination="@id/openedPhotoFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_authorizationFragment"
+            app:destination="@id/authorizationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/openedCollectionFragment"
+        android:name="com.pets.insplash.presentation.openedCollection.OpenedCollectionFragment"
+        android:label="fragment_opened_collection"
+        tools:layout="@layout/fragment_opened_collection" >
+        <action
+            android:id="@+id/action_openedCollectionFragment_to_openedPhotoFragment"
+            app:destination="@id/openedPhotoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/openedPhotoFragment"
+        android:name="com.pets.insplash.presentation.openedPhoto.OpenedPhotoFragment"
+        android:label="fragment_opened_photo"
+        tools:layout="@layout/fragment_opened_photo" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.pets.insplash.presentation.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_openedPhotoFragment"
+            app:destination="@id/openedPhotoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authorizationFragment"
+        android:name="com.pets.insplash.presentation.authorization.AuthorizationFragment"
+        android:label="fragment_authorization"
+        tools:layout="@layout/fragment_authorization" >
+        <action
+            android:id="@+id/action_authorizationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+</navigation>

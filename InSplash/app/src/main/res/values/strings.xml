@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name" translatable="false">InSplash</string>
+    <string name="log_in">Log in</string>
+    <string name="search_request">Search</string>
+    <string name="today_in_top">Today in the top</string>
+    <string name="the_new">New</string>
+    <string name="no_liked_photos">No one liked photo here</string>
+    <string name="exit_confirmation">Are you sure want to logout? All local data will be deleted.</string>
+    <string name="cancel">Cancel</string>
+    <string name="exit">Exit</string>
+    <string name="made_with">Made with:</string>
+    <string name="model">Model:</string>
+    <string name="exposure">Exposure:</string>
+    <string name="aperture">Aperture:</string>
+    <string name="focal_length">Focal length:</string>
+    <string name="iso">ISO:</string>
+    <string name="about">About:</string>
+    <string name="download">Download</string>
+    <string name="title_home">Home</string>
+    <string name="title_collection">Collection</string>
+    <string name="title_profile">Profile</string>
+
+    <string name="profile_image_description">Profile image</string>
+    <string name="like_image_button_description">Like photo</string>
+    <string name="top_image_description">Today\'s top image</string>
+    <string name="exit_button_description">Logout from account</string>
+    <string name="share_button_description">Share</string>
+
+</resources>

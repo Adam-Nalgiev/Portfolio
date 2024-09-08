@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.AppCompat.BoldTextStyle">
+        <item name="font">@font/aladin</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.BasicTextStyle">
+        <item name="font">@font/roboto</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.SmallTextStyle">
+        <item name="font">@font/roboto</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Theme.MaterialComponents.DayNight.NoActionBar.TextInputLayoutCustomStyle">
+        <item name="hintTextColor">@color/dark_gray</item>
+        <item name="boxBackgroundMode">none</item>
+    </style>
+
+    <style name="Base.Widget.AppCompat.Button.ButtonLogInStyle">
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/background_button</item>
+        <item name="font">@font/aladin</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+</resources>

@@ -3,6 +3,7 @@ package com.pets.insplash.presentation.authorization
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -27,6 +28,7 @@ class AuthorizationViewModel: ViewModel() {
     }
 
     fun handleDeepLink(intent: Intent, context: Context) {
+        Log.d("Deep Linking", "DEEP LINKING STARTED")
         val deepLinkUrl = intent.data
         if (intent.action != Intent.ACTION_VIEW || deepLinkUrl == null) return
 
@@ -48,7 +50,7 @@ class AuthorizationViewModel: ViewModel() {
     private fun getToken(authCode: String, context: Context) {
 
         viewModelScope.launch(Dispatchers.IO) {
-            kotlin.runCatching {
+            runCatching {
                 GetTokenUseCase().execute(TokenBodyDTO(code = authCode))
             }.fold(
                 onFailure = {

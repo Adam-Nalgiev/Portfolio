@@ -42,16 +42,12 @@ class AuthorizationFragment : Fragment() {
 
         }
 
-        viewModel.handleDeepLink(requireActivity().intent, requireContext())
-
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.isAuthSuccess.collect { isSuccess ->
                 when (isSuccess) {
 
                     true -> {
-                        if (requireActivity().intent != null && requireActivity().intent.action == Intent.ACTION_VIEW) {
-                            findNavController().navigate(R.id.action_authorizationFragment_to_homeFragment)
-                        }
+                        findNavController().navigate(R.id.action_authorizationFragment_to_homeFragment)
                         progressBar.isVisible = false
                     }
 
@@ -61,6 +57,13 @@ class AuthorizationFragment : Fragment() {
                     }
                 }
             }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (requireActivity().intent != null && requireActivity().intent.action == Intent.ACTION_VIEW) {
+            viewModel.handleDeepLink(requireActivity().intent, requireContext())
         }
     }
 

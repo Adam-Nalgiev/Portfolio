@@ -26,4 +26,6 @@
     <string name="exit_button_description">Logout from account</string>
     <string name="share_button_description">Share</string>
 
+    <string name="error_auth_process">Error of authorization process. Check your network connection and try again.</string>
+
 </resources>

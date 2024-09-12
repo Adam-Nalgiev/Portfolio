@@ -18,15 +18,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
-        val sharedPrefs = getSharedPreferences(
-            Constants.APP_SHARED_PREF,
-            MODE_PRIVATE
-        )
-        val authState = sharedPrefs.getBoolean(Constants.KEY_AUTH_STATE, false)
-        binding.navHostFragmentActivityBottomNavigation.isVisible = authState
+
+        val sharedPreferences = getSharedPreferences(Constants.KEY_APP_SHARED_PREF, MODE_PRIVATE)
+        val authState = sharedPreferences.getBoolean(Constants.KEY_IS_AUTHORIZED, false)
+
+        binding.bottomNavigationView.isVisible = authState
     }
 
     override fun onStart() {
@@ -46,6 +46,5 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
-
 
 }

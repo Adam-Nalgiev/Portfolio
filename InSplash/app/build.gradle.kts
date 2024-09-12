@@ -41,6 +41,9 @@ android {
 
 dependencies {
 
+    //lottie
+    implementation("com.airbnb.android:lottie:6.5.2")
+
     //dagger
     implementation("com.google.dagger:dagger:2.28.3")
     ksp("com.google.dagger:dagger-compiler:2.48")

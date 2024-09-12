@@ -25,4 +25,8 @@
     <string name="top_image_description">Топовая фотография на сегодня</string>
     <string name="exit_button_description">Выйти из аккаунта</string>
     <string name="share_button_description">Поделиться</string>
+
+
+    <string name="error_auth_process">Ошибка процесса авторизации. Проверьте соединение и попробуйте еще раз.</string>
+
 </resources>

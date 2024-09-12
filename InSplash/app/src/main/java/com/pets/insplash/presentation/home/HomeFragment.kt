@@ -23,16 +23,16 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-       // val state = viewModel.requireAuthState(requireContext())
-      //  if (!state){
-       //     findNavController().navigate(R.id.action_homeFragment_to_authorizationFragment)
-       // }
+
+        val state = viewModel.authState(requireContext())
+        if (!state){
+            findNavController().navigate(R.id.action_homeFragment_to_authorizationFragment)
+        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         binding.searchBar.setEndIconOnClickListener {
             binding.searchField.isVisible = !binding.searchField.isVisible

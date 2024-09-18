@@ -127,7 +127,7 @@
                 app:layout_constraintTop_toTopOf="@id/like_button" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_photos_recycler"
+                android:id="@+id/recycler_home_photos"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="vertical"

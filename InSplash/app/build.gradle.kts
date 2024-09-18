@@ -41,6 +41,13 @@ android {
 
 dependencies {
 
+    //glider
+    implementation("com.github.bumptech.glide:glide:4.14.2")
+    ksp("com.github.bumptech.glide:compiler:4.14.2")
+
+    //paging recycler view
+    implementation("androidx.paging:paging-runtime-ktx:3.3.2")
+
     //lottie
     implementation("com.airbnb.android:lottie:6.5.2")
 

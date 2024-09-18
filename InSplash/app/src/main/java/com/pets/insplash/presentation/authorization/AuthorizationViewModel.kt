@@ -28,10 +28,11 @@ class AuthorizationViewModel: ViewModel() {
     }
 
     fun handleDeepLink(intent: Intent, context: Context) {
-        Log.d("Deep Linking", "DEEP LINKING STARTED")
+        Log.d("ing", "DEEP LINKING STARTED")
+        Log.d("Deep Link CONTEXT", "$context")
         val deepLinkUrl = intent.data
         if (intent.action != Intent.ACTION_VIEW || deepLinkUrl == null) return
-
+        Log.d("DEEP LINK", "$intent")
         if (deepLinkUrl.queryParameterNames.contains(Constants.RESPONSE_TYPE)) {
             val authorCode = deepLinkUrl.getQueryParameter(Constants.RESPONSE_TYPE) ?: return
             getToken(authorCode, context)
@@ -48,16 +49,18 @@ class AuthorizationViewModel: ViewModel() {
             .build()
 
     private fun getToken(authCode: String, context: Context) {
-
-        viewModelScope.launch(Dispatchers.IO) {
+        Log.d("GET TOKEN CONTEXT", "$context")
+        viewModelScope.launch(Dispatchers.Main) {
             runCatching {
                 GetTokenUseCase().execute(TokenBodyDTO(code = authCode))
             }.fold(
                 onFailure = {
+                    Log.d("GET TOKEN", "GET TOKEN IS FAILURE $it")
                     saveAuthState(context, null)
                     _isAuthSuccess.send(false)
                 },
                 onSuccess = {
+                    Log.d("GET TOKEN", "GET TOKEN IS SUCCESS $it")
                     saveAuthState(context, it.access_token)
                     _isAuthSuccess.send(true)
                 })

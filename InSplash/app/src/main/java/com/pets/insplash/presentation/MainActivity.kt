@@ -1,5 +1,6 @@
 package com.pets.insplash.presentation
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -11,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pets.insplash.R
 import com.pets.insplash.databinding.ActivityMainBinding
 import com.pets.insplash.entity.constants.Constants
+import dagger.Provides
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,6 +47,11 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    @Provides
+    fun context(): Context {
+        return this
     }
 
 }

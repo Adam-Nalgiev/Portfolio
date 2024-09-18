@@ -42,7 +42,8 @@
         android:id="@+id/openedPhotoFragment"
         android:name="com.pets.insplash.presentation.openedPhoto.OpenedPhotoFragment"
         android:label="fragment_opened_photo"
-        tools:layout="@layout/fragment_opened_photo" />
+        tools:layout="@layout/fragment_opened_photo" >
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.pets.insplash.presentation.profile.ProfileFragment"

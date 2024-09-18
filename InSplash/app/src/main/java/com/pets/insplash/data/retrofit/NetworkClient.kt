@@ -6,7 +6,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class NetworkClient {
 
-    companion object {
         val retrofitReg: RegistrationAPI = Retrofit.Builder()
             .baseUrl(Constants.GET_TOKEN_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -18,5 +17,5 @@ class NetworkClient {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(API::class.java)
-    }
+
 }

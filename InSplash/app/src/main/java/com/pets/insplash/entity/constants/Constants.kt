@@ -19,6 +19,7 @@ internal class Constants {
         const val KEY_APP_SHARED_PREF = "InSplash shared preferences"
         const val KEY_IS_AUTHORIZED = "Is authorized"
         const val KEY_TOKEN = "App token"
+        const val KEY_BUNDLE_PHOTO_ID = "Photos ID"
     }
 
 }

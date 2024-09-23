@@ -1,6 +1,5 @@
 package com.pets.insplash.presentation
 
-import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -11,8 +10,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pets.insplash.R
 import com.pets.insplash.databinding.ActivityMainBinding
-import com.pets.insplash.entity.constants.Constants
-import dagger.Provides
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,10 +22,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
-        val sharedPreferences = getSharedPreferences(Constants.KEY_APP_SHARED_PREF, MODE_PRIVATE)
-        val authState = sharedPreferences.getBoolean(Constants.KEY_IS_AUTHORIZED, false)
-
-        binding.bottomNavigationView.isVisible = authState
     }
 
     override fun onStart() {
@@ -38,7 +31,6 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment_activity_bottom_navigation)
 
-
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.homeFragment, R.id.collectionsFragment, R.id.profileFragment
@@ -47,11 +39,10 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-    }
 
-    @Provides
-    fun context(): Context {
-        return this
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            binding.bottomNavigationView.isVisible = destination.id != R.id.authorizationFragment
+        }
     }
 
 }

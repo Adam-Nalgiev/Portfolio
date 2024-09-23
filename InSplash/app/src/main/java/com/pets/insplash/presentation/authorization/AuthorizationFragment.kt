@@ -48,7 +48,6 @@ class AuthorizationFragment : Fragment() {
 
                     true -> {
                         findNavController().navigate(R.id.action_authorizationFragment_to_homeFragment)
-                        progressBar.isVisible = false
                     }
 
                     false -> {

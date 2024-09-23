@@ -1,9 +1,9 @@
 package com.pets.insplash.presentation.home
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.graphics.drawable.toDrawable
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -13,9 +13,9 @@ import com.pets.insplash.databinding.ItemPhotosBinding
 import com.pets.insplash.domain.SendLikeUseCase
 import com.pets.insplash.domain.SendUnlikeUseCase
 import com.pets.insplash.entity.dto.PhotosDTO
-import kotlin.coroutines.suspendCoroutine
 
-class HomeAdapter(private val onClick:(String?) -> Unit) : PagingDataAdapter<PhotosDTO, MainViewHolder>(DiffUtilCallback()) {
+class HomeAdapter(private val onClick: (String) -> Unit) :
+    PagingDataAdapter<PhotosDTO, MainViewHolder>(DiffUtilCallback()) {
 
     private lateinit var bind: ItemPhotosBinding
 
@@ -28,33 +28,35 @@ class HomeAdapter(private val onClick:(String?) -> Unit) : PagingDataAdapter<Pho
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val item = getItem(position)!!
         with(holder.binding) {
-            item.let {
+            item.let { it ->
+                var isLiked = false
                 username.text = it.user.name
                 login.text = "@${it.user.username}"
                 likes.text = it.likes.toString()
 
                 Glide.with(image).load(it.urls.regular).error(R.drawable.icon_error).into(image)
 
-                Glide.with(profileImage).load(it.user.profileImage?.small).error(R.drawable.icon_empty_profile).circleCrop().into(profileImage)
+                Glide.with(imageProfile).load(it.user.profile_image?.medium)
+                    .error(R.drawable.icon_empty_profile).circleCrop().into(imageProfile)
 
-                image.setOnClickListener{
+                image.setOnClickListener {
                     onClick(item.id)
                 }
 
                 buttonLike.setOnClickListener {
 
-                    if (buttonLike.progress >= 0.5f){
-                        buttonLike.pauseAnimation()
-                        buttonLike.progress = 0f
-                        suspend { sendUnlike(it.id.toString()) }
-                    }else {
-                        buttonLike.playAnimation()
+                    if (!isLiked) {
+                        Glide.with(root).load(R.drawable.icon_like_active).into(buttonLike)
+                        Log.d("SEND LIKE", "SEND LIKE ${it.id}")
+                        isLiked = true
                         suspend { sendLike(it.id.toString()) }
+                    } else {
+                        Glide.with(root).load(R.drawable.icon_like_inactive).into(buttonLike)
+                        Log.d("SEND UNLIKE", "SEND UNLIKE ${it.id}")
+                        isLiked = false
+                        suspend { sendUnlike(it.id.toString()) }
                     }
-
                 }
-
-
             }
         }
     }

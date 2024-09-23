@@ -1,12 +1,10 @@
 package com.pets.insplash.entity.entities
 
-import com.pets.insplash.entity.dto.ProfileImageDTO
-
 interface User {
 
     val id: String
     val username: String
     val name: String
-    val profileImage: ProfileImageDTO?
+    val profile_image: ProfileImage? //при использовании принятой нормы наименования переменной происходит ошибка сериализации, возможно, замена converter factory решит эту проблему, но не в этот раз :)
 
 }

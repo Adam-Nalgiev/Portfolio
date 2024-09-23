@@ -47,7 +47,7 @@
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/new_text"
+                android:id="@+id/text_new"
                 style="@style/TextAppearance.AppCompat.BasicTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,31 +59,32 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/today_in_top_text"
+                android:id="@+id/text_interesting_photo"
                 style="@style/TextAppearance.AppCompat.BasicTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/today_in_top"
-                app:layout_constraintStart_toStartOf="@+id/new_text"
-                app:layout_constraintTop_toBottomOf="@+id/new_text" />
+                android:text="@string/may_interest"
+                app:layout_constraintStart_toStartOf="@+id/text_new"
+                app:layout_constraintTop_toBottomOf="@+id/text_new" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/top_image"
+                android:id="@+id/image_interesting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:minHeight="200dp"
                 android:layout_margin="16dp"
-                android:contentDescription="@string/top_image_description"
-                app:layout_constraintTop_toBottomOf="@+id/today_in_top_text" />
+                android:contentDescription="@string/description_interesting_image"
+                app:layout_constraintTop_toBottomOf="@+id/text_interesting_photo" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/profile_image"
+                android:id="@+id/image_profile"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_margin="16dp"
-                android:contentDescription="@string/profile_image_description"
-                app:layout_constraintBottom_toBottomOf="@id/top_image"
-                app:layout_constraintStart_toStartOf="@id/top_image" />
+                android:layout_margin="8dp"
+                android:contentDescription="@string/description_profile_image"
+                app:layout_constraintBottom_toBottomOf="@id/image_interesting"
+                app:layout_constraintStart_toStartOf="@id/image_interesting" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/username"
@@ -94,45 +95,45 @@
                 android:fontFamily="@font/roboto"
                 android:textColor="@color/white"
                 android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@id/profile_image"
-                app:layout_constraintTop_toTopOf="@id/profile_image" />
+                app:layout_constraintStart_toEndOf="@id/image_profile"
+                app:layout_constraintTop_toTopOf="@id/image_profile" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+                app:layout_constraintBottom_toBottomOf="@+id/image_profile"
                 app:layout_constraintStart_toStartOf="@+id/username"
                 app:layout_constraintTop_toBottomOf="@+id/username" />
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/like_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="16dp"
+                android:id="@+id/button_like"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_margin="8dp"
                 android:background="@android:color/transparent"
-                android:clickable="true"
-                android:contentDescription="@string/like_image_button_description"
-                app:layout_constraintBottom_toBottomOf="@id/top_image"
-                app:layout_constraintEnd_toEndOf="@id/top_image" />
+                android:contentDescription="@string/description_like"
+                android:src="@drawable/icon_like_inactive"
+                app:layout_constraintBottom_toBottomOf="@id/image_interesting"
+                app:layout_constraintEnd_toEndOf="@id/image_interesting"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/likes_count_text"
                 style="@style/TextAppearance.AppCompat.SmallTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                app:layout_constraintBottom_toBottomOf="@id/like_button"
-                app:layout_constraintEnd_toStartOf="@id/like_button"
-                app:layout_constraintTop_toTopOf="@id/like_button" />
+                app:layout_constraintBottom_toBottomOf="@id/button_like"
+                app:layout_constraintEnd_toStartOf="@id/button_like"
+                app:layout_constraintTop_toTopOf="@id/button_like" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_home_photos"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/top_image"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/image_interesting"
                 app:spanCount="2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,7 @@
     <string name="app_name" translatable="false">InSplash</string>
     <string name="log_in">Log in</string>
     <string name="search_request">Search</string>
-    <string name="today_in_top">Today in the top</string>
+    <string name="may_interest">This can interest you</string>
     <string name="the_new">New</string>
     <string name="no_liked_photos">No one liked photo here</string>
     <string name="exit_confirmation">Are you sure want to logout? All local data will be deleted.</string>
@@ -20,12 +20,12 @@
     <string name="title_collection">Collection</string>
     <string name="title_profile">Profile</string>
 
-    <string name="profile_image_description">Profile image</string>
-    <string name="like_image_button_description">Like photo</string>
-    <string name="top_image_description">Today\'s top image</string>
-    <string name="exit_button_description">Logout from account</string>
-    <string name="share_button_description">Share</string>
+    <string name="description_profile_image">Profile image</string>
+    <string name="description_like_image_button">Like photo</string>
+    <string name="description_interesting_image">This image can interest you</string>
+    <string name="description_exit_button">Logout from account</string>
+    <string name="description_share_button">Share</string>
+    <string name="description_like">Like/Unlike</string>
 
     <string name="error_auth_process">Error of authorization process. Check your network connection and try again.</string>
-
 </resources>

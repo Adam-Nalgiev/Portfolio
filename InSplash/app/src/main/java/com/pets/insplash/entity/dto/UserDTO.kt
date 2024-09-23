@@ -7,6 +7,6 @@ data class UserDTO(
     override val id: String,
     override val username: String,
     override val name: String,
-    override val profileImage: ProfileImageDTO?,
+    override val profile_image: ProfileImageDTO?,
 
     ) : User

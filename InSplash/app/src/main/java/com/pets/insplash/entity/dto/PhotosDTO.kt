@@ -6,8 +6,8 @@ data class PhotosDTO(
 
     override val id: String,
     override val likes: Int,
-    override val liked_by_user: Boolean? = null,
-    override val description: String? = null,
+    override val liked_by_user: Boolean?,
+    override val description: String?,
     override val user: UserDTO,
     override val urls: UrlsDTO,
 

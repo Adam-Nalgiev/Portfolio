@@ -1,6 +1,5 @@
 package com.pets.insplash.data.retrofit
 
-import com.pets.insplash.entity.constants.Constants
 import com.pets.insplash.entity.dto.CollectionDTO
 import com.pets.insplash.entity.dto.CurrentUserDTO
 import com.pets.insplash.entity.dto.LikeUnlikeDTO
@@ -77,12 +76,16 @@ interface API {
         @Header("Authorization") request: String?
     ): CurrentUserDTO
 
+    @GET("/photos/random")
+    suspend fun getRandomPhoto(
+        @Header("Authorization") request: String?
+    ): OnePhotoDTO
+
     @GET("/search/photos")
     suspend fun searchPhotos(
         @Header("Authorization") request: String?,
-        @Header("client_id") clientID :String = Constants.CLIENT_ID, // проверить возможность удаения этого поля
         @Query("page") page: Int,
         @Query("query") query: String,
-    ): SearchResultDTO // проверить одинаковость модели с обычным фотоДТО
+    ): SearchResultDTO
 
 }

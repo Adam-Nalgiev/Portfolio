@@ -50,7 +50,7 @@ class AuthorizationViewModel: ViewModel() {
 
     private fun getToken(authCode: String, context: Context) {
         Log.d("GET TOKEN CONTEXT", "$context")
-        viewModelScope.launch(Dispatchers.Main) {
+        viewModelScope.launch(Dispatchers.IO) {
             runCatching {
                 GetTokenUseCase().execute(TokenBodyDTO(code = authCode))
             }.fold(

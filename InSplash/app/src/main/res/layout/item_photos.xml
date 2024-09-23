@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="200dp"
-    android:layout_height="200dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="4dp"
     android:animateLayoutChanges="true">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,12 +18,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/image_profile"
         android:src="@drawable/icon_empty_profile"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_margin="8dp"
-        android:contentDescription="@string/profile_image_description"
+        android:contentDescription="@string/description_profile_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -31,40 +32,45 @@
         style="@style/TextAppearance.AppCompat.SmallTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/roboto"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@id/profile_image"
-        app:layout_constraintTop_toTopOf="@id/profile_image" />
+        android:layout_marginStart="4dp"
+        android:gravity="start"
+        android:maxEms="10"
+        android:maxLines="1"
+        app:layout_constraintStart_toEndOf="@id/image_profile"
+        app:layout_constraintTop_toTopOf="@id/image_profile" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+        style="@style/TextAppearance.AppCompat.SmallTextStyle"
+        android:textColor="@color/gray"
+        android:textSize="11sp"
         app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/likes"
+        style="@style/TextAppearance.AppCompat.SmallTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:fontFamily="@font/roboto"
-        android:text="@null"
-        android:textColor="@color/white"
         android:textSize="11sp"
+        android:maxLength="15"
         app:layout_constraintEnd_toStartOf="@id/button_like"
         app:layout_constraintTop_toTopOf="@id/button_like"
         app:layout_constraintBottom_toBottomOf="@id/button_like"/>
 
-    <com.airbnb.lottie.LottieAnimationView
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/button_like"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_margin="8dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/description_like"
+        android:src="@drawable/icon_like_inactive"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

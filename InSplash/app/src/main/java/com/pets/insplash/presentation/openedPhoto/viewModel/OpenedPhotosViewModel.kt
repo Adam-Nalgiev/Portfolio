@@ -8,7 +8,7 @@ import javax.inject.Inject
 class OpenedPhotosViewModel @Inject constructor(private val getPhotoUseCase: GetPhotoUseCase) : ViewModel() {
 
 
-    suspend fun getPhoto(id: String): OnePhotoDTO? {
+    suspend fun getPhoto(id: String): OnePhotoDTO {
         return getPhotoUseCase.execute(id)
     }
 }

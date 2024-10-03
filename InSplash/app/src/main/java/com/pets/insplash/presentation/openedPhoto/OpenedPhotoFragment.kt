@@ -2,7 +2,6 @@ package com.pets.insplash.presentation.openedPhoto
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,9 +16,7 @@ import com.pets.insplash.entity.constants.Constants
 import com.pets.insplash.presentation.openedPhoto.viewModel.OpenedPhotosViewModel
 import com.pets.insplash.presentation.openedPhoto.viewModel.OpenedPhotosViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.time.LocalDate
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -45,12 +42,10 @@ class OpenedPhotoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = arguments?.getString(Constants.KEY_BUNDLE_PHOTO_ID) ?: ""
-        Log.d("ID", id)
 
 
         viewLifecycleOwner.lifecycleScope.launch {
             val photo = viewModel.getPhoto(id)
-            Log.d("DATA", "$photo")
 
             if (photo != null) {
                 Glide.with(requireContext()).load(photo.urls.full).optionalCenterCrop().into(binding.image)

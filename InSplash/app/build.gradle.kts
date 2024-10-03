@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "com.pets.insplash"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.pets.insplash"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 

@@ -14,7 +14,7 @@ InSplash *В ПРОЦЕССЕ РАЗРАБОТКИ*
   - Clean Architecture + DRY, KISS, YAGNI
   - MVVM
   - Coroutines + Flow/Channels
-  - Dagger 2
+  - Hilt
   - Single Activity
   - Retrofit 2
   - Room

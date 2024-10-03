@@ -9,7 +9,7 @@ data class ExifDTO(
     override val name: String,
     override val exposure_time: String,
     override val aperture: String,
-    override val focal_length: Int,
+    override val focal_length: Float,
     override val iso: Int,
 
     ) : Exif

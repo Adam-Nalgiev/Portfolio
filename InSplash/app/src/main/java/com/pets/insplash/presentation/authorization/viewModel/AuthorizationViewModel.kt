@@ -1,9 +1,8 @@
-package com.pets.insplash.presentation.authorization
+package com.pets.insplash.presentation.authorization.viewModel
 
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,8 +15,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AuthorizationViewModel: ViewModel() {
+class AuthorizationViewModel @Inject constructor(private val getTokenUseCase: GetTokenUseCase): ViewModel() {
 
     private val _isAuthSuccess = Channel<Boolean>()
     val isAuthSuccess = _isAuthSuccess.receiveAsFlow()
@@ -28,11 +28,8 @@ class AuthorizationViewModel: ViewModel() {
     }
 
     fun handleDeepLink(intent: Intent, context: Context) {
-        Log.d("ing", "DEEP LINKING STARTED")
-        Log.d("Deep Link CONTEXT", "$context")
         val deepLinkUrl = intent.data
         if (intent.action != Intent.ACTION_VIEW || deepLinkUrl == null) return
-        Log.d("DEEP LINK", "$intent")
         if (deepLinkUrl.queryParameterNames.contains(Constants.RESPONSE_TYPE)) {
             val authorCode = deepLinkUrl.getQueryParameter(Constants.RESPONSE_TYPE) ?: return
             getToken(authorCode, context)
@@ -49,18 +46,15 @@ class AuthorizationViewModel: ViewModel() {
             .build()
 
     private fun getToken(authCode: String, context: Context) {
-        Log.d("GET TOKEN CONTEXT", "$context")
         viewModelScope.launch(Dispatchers.IO) {
             runCatching {
-                GetTokenUseCase().execute(TokenBodyDTO(code = authCode))
+                getTokenUseCase.execute(TokenBodyDTO(code = authCode))
             }.fold(
                 onFailure = {
-                    Log.d("GET TOKEN", "GET TOKEN IS FAILURE $it")
                     saveAuthState(context, null)
                     _isAuthSuccess.send(false)
                 },
                 onSuccess = {
-                    Log.d("GET TOKEN", "GET TOKEN IS SUCCESS $it")
                     saveAuthState(context, it.access_token)
                     _isAuthSuccess.send(true)
                 })

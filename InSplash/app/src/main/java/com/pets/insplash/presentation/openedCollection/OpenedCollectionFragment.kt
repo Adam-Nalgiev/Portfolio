@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import com.pets.insplash.R
 import com.pets.insplash.databinding.FragmentOpenedPhotoBinding
 import com.pets.insplash.databinding.FragmentProfileBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class OpenedCollectionFragment : Fragment() {
 
     private var _binding: FragmentOpenedPhotoBinding? = null

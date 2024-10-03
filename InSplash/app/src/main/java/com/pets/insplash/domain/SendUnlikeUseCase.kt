@@ -1,9 +1,12 @@
 package com.pets.insplash.domain
 
 import com.pets.insplash.data.Repository
+import javax.inject.Inject
 
-class SendUnlikeUseCase {
+class SendUnlikeUseCase @Inject constructor(private val repository: Repository) {
+
     suspend fun execute(id: String) {
-        Repository().sendUnlike(id)
+        repository.sendUnlike(id)
     }
+
 }

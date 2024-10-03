@@ -13,14 +13,22 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.pets.insplash.R
 import com.pets.insplash.databinding.FragmentAuthorizationBinding
+import com.pets.insplash.presentation.authorization.viewModel.AuthorizationViewModel
+import com.pets.insplash.presentation.authorization.viewModel.AuthorizationViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class AuthorizationFragment : Fragment() {
 
     private var _binding: FragmentAuthorizationBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: AuthorizationViewModel by viewModels()
+    @Inject
+    lateinit var viewModelFactory: AuthorizationViewModelFactory
+
+    private val viewModel: AuthorizationViewModel by viewModels { viewModelFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,9 +45,7 @@ class AuthorizationFragment : Fragment() {
         binding.buttonLogIn.setOnClickListener {
 
             viewModel.openBrowser(requireContext())
-
             progressBar.isVisible = true
-
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -54,6 +60,7 @@ class AuthorizationFragment : Fragment() {
                         Toast.makeText(requireContext(), R.string.error_auth_process, Toast.LENGTH_LONG).show()
                         progressBar.isVisible = false
                     }
+
                 }
             }
         }

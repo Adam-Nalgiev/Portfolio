@@ -1,4 +1,4 @@
-package com.pets.insplash.data.retrofit
+package com.pets.insplash.data.network
 
 import com.pets.insplash.entity.dto.AuthInfoDTO
 import com.pets.insplash.entity.dto.TokenBodyDTO

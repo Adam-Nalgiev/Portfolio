@@ -28,4 +28,5 @@
     <string name="description_like">Like/Unlike</string>
 
     <string name="error_auth_process">Error of authorization process. Check your network connection and try again.</string>
+    <string name="error_get_photo">Error of getting data process. Check your network connection and try again.</string>
 </resources>

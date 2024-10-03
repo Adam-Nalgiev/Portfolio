@@ -3,7 +3,7 @@ package com.pets.insplash.entity.constants
 internal class Constants {
 
     companion object {
-        const val GET_TOKEN_URL = "https://unsplash.com"
+        const val REGISTRATION_BASEURL = "https://unsplash.com"
         const val AUTHORIZATION_BASE_URL = "https://unsplash.com/oauth/authorize"
         const val API_BASEURL = "https://api.unsplash.com"
         const val CLIENT_ID = "1uqN7imwX1vT0e-R2ALszCV2s0GA2gZT5vz2232tRFw"

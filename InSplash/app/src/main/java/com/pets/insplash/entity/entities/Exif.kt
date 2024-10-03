@@ -7,7 +7,7 @@ interface Exif {
     val name: String
     val exposure_time: String
     val aperture: String
-    val focal_length: Int
+    val focal_length: Float
     val iso: Int
 
 }

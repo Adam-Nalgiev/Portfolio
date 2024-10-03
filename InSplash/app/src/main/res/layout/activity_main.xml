@@ -5,13 +5,6 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".presentation.MainActivity">
-<!-- Создал, потому что планирую внедрить кастомный тулбар -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_view"

@@ -28,4 +28,5 @@
     <string name="description_like">Нравится/Не нравится</string>
 
     <string name="error_auth_process">Ошибка процесса авторизации. Проверьте соединение и попробуйте еще раз.</string>
+    <string name="error_get_photo">Ошибка получения данных о фотографии. Проверьте соединение и попробуйте снова.</string>
 </resources>

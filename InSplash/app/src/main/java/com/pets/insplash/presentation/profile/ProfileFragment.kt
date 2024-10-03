@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.pets.insplash.R
 import com.pets.insplash.databinding.FragmentProfileBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null

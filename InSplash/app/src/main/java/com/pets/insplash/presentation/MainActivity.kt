@@ -1,5 +1,6 @@
 package com.pets.insplash.presentation
 
+import android.Manifest
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -9,6 +10,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pets.insplash.R
 import com.pets.insplash.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -41,5 +44,16 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    companion object {
+        private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss"
+        const val PERMISSION_REQUEST_CODE = 101
+        val FILENAME =
+            SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(System.currentTimeMillis())!!
+
+        val permissions = arrayOf(
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
     }
 }

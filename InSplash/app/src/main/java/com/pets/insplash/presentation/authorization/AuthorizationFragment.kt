@@ -53,12 +53,13 @@ class AuthorizationFragment : Fragment() {
                 when (isSuccess) {
 
                     true -> {
+                        binding.progressBarLoading.isVisible = true
                         findNavController().navigate(R.id.action_authorizationFragment_to_homeFragment)
                     }
 
                     false -> {
                         Toast.makeText(requireContext(), R.string.error_auth_process, Toast.LENGTH_LONG).show()
-                        progressBar.isVisible = false
+                        progressBar.visibility = View.GONE
                     }
 
                 }

@@ -10,7 +10,6 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:contentDescription="@string/description_profile_image"
-        android:src="@drawable/icon_empty_profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

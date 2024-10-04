@@ -2,7 +2,7 @@
     <string name="app_name" translatable="false">InSplash</string>
     <string name="log_in">Log in</string>
     <string name="search_request">Search</string>
-    <string name="may_interest">This can interest you</string>
+    <string name="may_interest">This may interest you</string>
     <string name="the_new">New</string>
     <string name="no_liked_photos">No one liked photo here</string>
     <string name="exit_confirmation">Are you sure want to logout? All local data will be deleted.</string>
@@ -19,6 +19,9 @@
     <string name="title_home">Home</string>
     <string name="title_collection">Collection</string>
     <string name="title_profile">Profile</string>
+    <string name="error">Error: </string>
+    <string name="share">Share to:</string>
+    <string name="download_started">Download has started</string>
 
     <string name="description_profile_image">Profile image</string>
     <string name="description_like_image_button">Like photo</string>

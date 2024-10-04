@@ -8,7 +8,8 @@ import com.bumptech.glide.Glide
 import com.pets.insplash.R
 import com.pets.insplash.databinding.ViewLikesBinding
 
-class LikesViewGroup(
+class LikesViewGroup
+    @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0

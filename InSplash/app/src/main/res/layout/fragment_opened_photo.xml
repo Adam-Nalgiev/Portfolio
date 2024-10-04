@@ -7,12 +7,13 @@
     tools:context=".presentation.openedPhoto.OpenedPhotoFragment">
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/share"
+        android:id="@+id/button_share"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_gravity="center_vertical|end"
         android:layout_margin="8dp"
         android:clickable="true"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/description_share_button"
         android:src="@drawable/icon_share"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,55 +27,23 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/share" />
+        app:layout_constraintTop_toBottomOf="@+id/button_share" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/image_profile"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_margin="8dp"
-        app:layout_constraintBottom_toBottomOf="@id/image"
-        app:layout_constraintStart_toStartOf="@id/image" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/username"
-        style="@style/TextAppearance.AppCompat.SmallTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/roboto"
-        app:layout_constraintStart_toEndOf="@id/image_profile"
-        app:layout_constraintTop_toTopOf="@id/image_profile" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/login"
-        style="@style/TextAppearance.AppCompat.SmallTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@id/image_profile"
-        app:layout_constraintStart_toStartOf="@id/username"
-        app:layout_constraintTop_toBottomOf="@id/username" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/button_like"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_margin="8dp"
-        android:clickable="true"
-        android:contentDescription="@string/description_like_image_button"
-        app:layout_constraintBottom_toBottomOf="@id/image"
-        app:layout_constraintEnd_toEndOf="@id/image" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/likes"
-        style="@style/TextAppearance.AppCompat.SmallTextStyle"
+    <com.pets.insplash.presentation.views.UserProfileViewGroup
+        android:id="@+id/view_user_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        app:layout_constraintBottom_toBottomOf="@id/button_like"
-        app:layout_constraintEnd_toStartOf="@id/button_like"
-        app:layout_constraintTop_toTopOf="@id/button_like" />
+        app:layout_constraintBottom_toBottomOf="@+id/image"
+        app:layout_constraintStart_toStartOf="@+id/image" />
+
+    <com.pets.insplash.presentation.views.LikesViewGroup
+        android:id="@+id/view_likes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/image"
+        app:layout_constraintEnd_toEndOf="@+id/image" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/location_icon"
@@ -252,40 +221,28 @@
         app:layout_constraintStart_toStartOf="@id/about"
         app:layout_constraintTop_toBottomOf="@id/about" />
 
-    <LinearLayout
-        android:id="@+id/download_button"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_download"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:clickable="true"
-        android:padding="4dp"
+        android:layout_height="24dp"
+        android:background="@android:color/transparent"
+        android:drawableEnd="@drawable/icon_download"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:paddingEnd="4dp"
+        android:paddingStart="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/description"
-        app:layout_constraintTop_toBottomOf="@+id/description">
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/download"
-            style="@style/TextAppearance.AppCompat.BasicTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/download"
-            android:textSize="12sp" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/downloads"
-            style="@style/TextAppearance.AppCompat.BasicTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:textSize="12sp" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:src="@drawable/icon_download" />
-
-    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        style="@style/Base.Widget.AppCompat.ProgressBar.BaseStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/image"
+        app:layout_constraintEnd_toEndOf="@+id/image"
+        app:layout_constraintStart_toStartOf="@+id/image"
+        app:layout_constraintTop_toTopOf="@+id/image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

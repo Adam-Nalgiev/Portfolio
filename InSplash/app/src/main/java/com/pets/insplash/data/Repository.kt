@@ -37,4 +37,8 @@ class Repository @Inject constructor(private val client: NetworkClient) {
         return client.registrationRequest.getAccessToken(tokenData = tokenBody)
     }
 
+    suspend fun sendDownload(id: String) {
+        client.request.downloadPhoto(id = id)
+    }
+
 }

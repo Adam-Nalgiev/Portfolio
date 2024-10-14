@@ -18,7 +18,7 @@ class OpenedPhotosViewModel @Inject constructor(
     private val sendDownloadRequestUseCase: SendDownloadRequestUseCase,
 ) : ViewModel() {
 
-    suspend fun getPhoto(id: String): OnePhotoDTO {
+    suspend fun getPhoto(id: String): OnePhotoDTO? {
         return viewModelScope.async(Dispatchers.IO) { getPhotoUseCase.execute(id) }.await()
     }
 
@@ -49,11 +49,12 @@ class OpenedPhotosViewModel @Inject constructor(
             .setMimeType("image/jpeg")
     }
 
-    fun prepareTags(tagsList: List<TagsDTO>): String {
+    fun prepareTags(tagsList: List<TagsDTO>): String { //надо подумать над более алгоритмически эффективным решением
         val tags = mutableListOf<String>()
         tagsList.onEach {
             tags.add("#${it.title}")
         }
         return tags.toString().removePrefix("[").removeSuffix("]")
     }
+
 }

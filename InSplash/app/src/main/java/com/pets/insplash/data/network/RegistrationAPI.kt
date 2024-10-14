@@ -10,6 +10,6 @@ interface RegistrationAPI {
     @POST("/oauth/token")
     suspend fun getAccessToken(
         @Body tokenData: TokenBodyDTO
-    ): AuthInfoDTO
+    ): AuthInfoDTO?
 
 }

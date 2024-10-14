@@ -52,8 +52,7 @@ class HomeFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -65,18 +64,23 @@ class HomeFragment : Fragment() {
         binding.recyclerHomePhotos.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {
-            val photosData = viewModel.imageDataMapper()
 
-            if (photosData != null) {
-                setImage(photosData)
+            viewModel.newPhotoFlow.collect { photosData ->
+                val photoId = photosData?.id ?: ""
 
-                binding.imageInteresting.setOnClickListener {
-                    onClick(ClickAction.OPEN_ITEM, photosData.id)
+                if (photosData != null) {
+
+                    setImage(photosData)
+
+                    binding.imageInteresting.setOnClickListener {
+                        onClick(ClickAction.OPEN_ITEM, photoId)
+                    }
                 }
             }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
+
             viewModel.photos.collect {
                 adapter.submitData(it)
             }
@@ -100,10 +104,10 @@ class HomeFragment : Fragment() {
                 viewLifecycleOwner.lifecycleScope.launch {
                     if (binding.editTextSearch.text.toString() == "") {
                         viewModel.changeRecyclerData(null)
-                        viewModel.photos.collect{ adapter.submitData(it)}
+                        viewModel.photos.collect{ adapter.submitData(it) }
                     } else {
                         viewModel.changeRecyclerData(binding.editTextSearch.text.toString())
-                        viewModel.photos.collect{ adapter.submitData(it)}
+                        viewModel.photos.collect{ adapter.submitData(it) }
                     }
                 }
                 return@setOnKeyListener true
@@ -111,6 +115,7 @@ class HomeFragment : Fragment() {
                 return@setOnKeyListener false
             }
         }
+
     }
 
     override fun onDestroy() {
@@ -131,9 +136,9 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setImage(imageData: ImageDataModel) {
+    private fun setImage(imageData: ImageDataModel?) {
 
-        Glide.with(requireContext()).load(imageData.imageUrl).listener(
+        Glide.with(requireContext()).load(imageData?.imageUrl).listener(
             object : RequestListener<Drawable> {
                 override fun onLoadFailed(
                     e: GlideException?,
@@ -141,7 +146,7 @@ class HomeFragment : Fragment() {
                     target: Target<Drawable>?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    hideImage()
+                    viewModel.hideImage(binding)
                     Toast.makeText(requireContext(), R.string.error_get_photo, Toast.LENGTH_LONG).show()
                     return false
                 }
@@ -153,7 +158,7 @@ class HomeFragment : Fragment() {
                     dataSource: DataSource?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    setImageData(imageData)
+                    viewModel.setImageData(imageData!!, binding)
                     binding.progressCircular.visibility = View.GONE
                     return false
                 }
@@ -161,45 +166,4 @@ class HomeFragment : Fragment() {
         ).into(binding.imageInteresting)
     }
 
-    private fun setImageData(imageData: ImageDataModel) {
-        val id = imageData.id
-        var isLiked = imageData.isLikedByUser
-        val profileImageUrl = imageData.profileImageUrl!!
-        val username = imageData.username
-        val login = imageData.userLogin
-        val likesCount = imageData.likesCount
-
-        with(binding.viewUserProfile) {
-            setImage(profileImageUrl)
-            setUsername(username)
-            setUserLogin(login)
-        }
-
-        with(binding.viewLikes) {
-            setLikesCount(likesCount)
-
-            setOnClickListener {
-                viewLifecycleOwner.lifecycleScope.launch {
-                    if (!isLiked) {
-                        isLiked = true
-                        setLike()
-                        viewModel.sendLike(id)
-                    } else {
-                        isLiked = false
-                        setUnlike()
-                        viewModel.sendUnlike(id)
-                    }
-                }
-            }
-        }
-    }
-
-    private fun hideImage() {
-        binding.progressCircular.visibility = View.GONE
-        binding.imageInteresting.visibility = View.GONE
-        binding.textNew.visibility = View.GONE
-        binding.textInterestingPhoto.visibility = View.GONE
-        binding.viewLikes.visibility = View.GONE
-        binding.viewUserProfile.visibility = View.GONE
-    }
 }

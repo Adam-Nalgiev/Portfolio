@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class GetPhotoUseCase @Inject constructor(private val repository: Repository) {
 
-    suspend fun execute(id: String): OnePhotoDTO {
+    suspend fun execute(id: String): OnePhotoDTO? {
         return repository.getPhoto(id)
     }
 

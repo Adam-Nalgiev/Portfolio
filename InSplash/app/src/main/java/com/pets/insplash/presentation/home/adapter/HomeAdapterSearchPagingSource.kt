@@ -24,12 +24,16 @@ class HomeAdapterSearchPagingSource(
                 LoadResult.Error(it)
             },
             onSuccess = {
-                Log.d("PAGING SOURCE", "SUCCESS $it")
-                LoadResult.Page(
-                    data = it,
-                    nextKey = page + 1,
-                    prevKey = null
-                )
+                return if (it != null) {
+                    Log.d("PAGING SOURCE", "SUCCESS $it")
+                    LoadResult.Page(
+                        data = it,
+                        nextKey = page + 1,
+                        prevKey = null
+                    )
+                } else {
+                    LoadResult.Error(NullPointerException())
+                }
             }
         )
     }

@@ -53,21 +53,33 @@ class OpenedPhotoFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             val photo = viewModel.getPhoto(id)
-            val photoUrl = photo.urls.raw ?: ""
-            val photoLink = photo.links.html
+            if (photo != null) {
+                val photoUrl = photo.urls.raw ?: ""
+                val photoLink = photo.links.html
 
-            setImage(photo)
+                setImage(photo)
 
-            binding.buttonDownload.setOnClickListener {
-                viewLifecycleOwner.lifecycleScope.launch {
-                    downloadImage(photoId = photo.id, url = photoUrl, name = MainActivity.FILENAME)
+                binding.buttonDownload.setOnClickListener {
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        downloadImage(
+                            photoId = photo.id,
+                            url = photoUrl,
+                            name = MainActivity.FILENAME
+                        )
+                    }
                 }
-            }
 
-            binding.buttonShare.setOnClickListener {
-                viewLifecycleOwner.lifecycleScope.launch {
-                    share(photoLink)
+                binding.buttonShare.setOnClickListener {
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        share(photoLink)
+                    }
                 }
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.error_get_photo),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
@@ -126,6 +138,11 @@ class OpenedPhotoFragment : Fragment() {
         val about = "@${data.user.username}"
         val descriptionString = data.description
         val downloadsCount = getString(R.string.download).plus("   ${data.downloads} ")
+        val userProfileImage = data.user.profile_image?.medium ?: ""
+        val username = data.user.name
+        val login = data.user.username
+        val isLiked = data.liked_by_user
+        val likesCount = data.likes
 
         with(binding) {
             location.text = locationString
@@ -139,6 +156,13 @@ class OpenedPhotoFragment : Fragment() {
             valAbout.text = about
             description.text = descriptionString
             buttonDownload.text = downloadsCount
+
+            viewUserProfile.setImage(userProfileImage)
+            viewUserProfile.setUserLogin(username)
+            viewUserProfile.setUsername(login)
+
+            viewLikes.setLikesCount(likesCount)
+            viewLikes.setLikesState(isLiked)
         }
 
     }

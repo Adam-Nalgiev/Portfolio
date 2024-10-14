@@ -55,7 +55,7 @@ class AuthorizationViewModel @Inject constructor(private val getTokenUseCase: Ge
                     _isAuthSuccess.send(false)
                 },
                 onSuccess = {
-                    saveAuthState(context, it.access_token)
+                    saveAuthState(context, it?.access_token)
                     _isAuthSuccess.send(true)
                 })
         }

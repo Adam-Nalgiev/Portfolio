@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class GetTokenUseCase @Inject constructor(private val repository: Repository) {
 
-    suspend fun execute(authData: TokenBodyDTO): AuthInfoDTO {
+    suspend fun execute(authData: TokenBodyDTO): AuthInfoDTO? {
         return repository.getToken(authData)
     }
 

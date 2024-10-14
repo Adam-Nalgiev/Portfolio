@@ -24,7 +24,6 @@ class HomeAdapter @Inject constructor(private val onClick: (ClickAction, String)
         val item = getItem(position)!!
         with(holder.binding) {
             item.let {
-                var isLiked = it.liked_by_user ?: false
                 val profileImageUrl = it.user.profile_image?.medium ?: ""
                 val username = it.user.name
                 val login = "@${it.user.username}"
@@ -47,27 +46,8 @@ class HomeAdapter @Inject constructor(private val onClick: (ClickAction, String)
                     onClick(ClickAction.OPEN_ITEM, item.id)
                 }
 
-                viewLikes.setOnClickListener {
-
-                    if (!isLiked) {
-                        isLiked = true
-                        viewLikes.setLike()
-                        sendLike(id)
-                    } else {
-                        isLiked = false
-                        viewLikes.setUnlike()
-                        sendUnlike(id)
-                    }
-                }
             }
         }
     }
 
-    private fun sendUnlike(id: String) {
-        onClick(ClickAction.UNLIKE, id)
-    }
-
-    private fun sendLike(id: String) {
-        onClick(ClickAction.LIKE, id)
-    }
 }

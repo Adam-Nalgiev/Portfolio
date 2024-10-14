@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class GetRandomPhotoUseCase @Inject constructor(private val repository: Repository) {
 
-    suspend fun execute(): OnePhotoDTO {
+    suspend fun execute(): OnePhotoDTO? {
         return repository.getRandomPhoto()
     }
 

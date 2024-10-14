@@ -17,23 +17,23 @@ class Repository @Inject constructor(private val client: NetworkClient) {
         client.request.unlikePhoto(id = photoId)
     }
 
-    suspend fun getPhoto(id: String): OnePhotoDTO {
+    suspend fun getPhoto(id: String): OnePhotoDTO? {
         return client.request.getOnePhoto(id = id)
     }
 
-    suspend fun getRandomPhoto(): OnePhotoDTO {
+    suspend fun getRandomPhoto(): OnePhotoDTO? {
         return client.request.getRandomPhoto()
     }
 
-    suspend fun getHomePhotos(page: Int): List<PhotosDTO> {
+    suspend fun getHomePhotos(page: Int): List<PhotosDTO>? {
         return client.request.getHomePhotos(page = page)
     }
 
-    suspend fun getFoundPhotos(searchTerms: String, page: Int): List<PhotosDTO> {
-        return client.request.searchPhotos(query = searchTerms, page = page).results
+    suspend fun getFoundPhotos(searchTerms: String, page: Int): List<PhotosDTO>? {
+        return client.request.searchPhotos(query = searchTerms, page = page)?.results
     }
 
-    suspend fun getToken(tokenBody: TokenBodyDTO): AuthInfoDTO {
+    suspend fun getToken(tokenBody: TokenBodyDTO): AuthInfoDTO? {
         return client.registrationRequest.getAccessToken(tokenData = tokenBody)
     }
 

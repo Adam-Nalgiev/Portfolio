@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class GetHomePhotosUseCase @Inject constructor(private val repository: Repository) {
 
-    suspend fun execute(page: Int): List<PhotosDTO> {
+    suspend fun execute(page: Int): List<PhotosDTO>? {
         return repository.getHomePhotos(page)
     }
 

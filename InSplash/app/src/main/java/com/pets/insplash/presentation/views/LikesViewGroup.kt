@@ -29,14 +29,14 @@ class LikesViewGroup
     @Inject
     lateinit var viewModelFactory: HomeViewModelFactory
 
-    private val viewModel by lazy {
-        findViewTreeViewModelStoreOwner()?.let { owner ->
-            ViewModelProvider(
-                owner,
-                viewModelFactory
-            )[HomeViewModel::class.java]
-        }
-    }
+//    private val viewModel by lazy {
+//        findViewTreeViewModelStoreOwner()?.let { owner ->
+//            ViewModelProvider(
+//                owner,
+//                viewModelFactory
+//            )[HomeViewModel::class.java]
+//        }
+//    }
 
     init {
         addView(binding.root)

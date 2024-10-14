@@ -28,7 +28,6 @@ class HomeAdapter @Inject constructor(private val onClick: (ClickAction, String)
                 val username = it.user.name
                 val login = "@${it.user.username}"
                 val likesCount = it.likes
-                val id = it.id
 
                 viewUserProfile.setImage(profileImageUrl)
                 viewUserProfile.setUsername(username)

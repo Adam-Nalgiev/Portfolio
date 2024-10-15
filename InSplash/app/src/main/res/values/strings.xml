@@ -22,6 +22,7 @@
     <string name="error">Error: </string>
     <string name="share">Share to:</string>
     <string name="download_started">Download has started</string>
+    <string name="photos">photos</string>
 
     <string name="description_profile_image">Profile image</string>
     <string name="description_like_image_button">Like photo</string>

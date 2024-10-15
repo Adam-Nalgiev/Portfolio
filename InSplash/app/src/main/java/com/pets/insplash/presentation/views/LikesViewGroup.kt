@@ -9,7 +9,6 @@ import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import com.bumptech.glide.Glide
 import com.pets.insplash.R
 import com.pets.insplash.databinding.ViewLikesBinding
-import com.pets.insplash.presentation.home.viewModel.HomeViewModel
 import com.pets.insplash.presentation.home.viewModel.HomeViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

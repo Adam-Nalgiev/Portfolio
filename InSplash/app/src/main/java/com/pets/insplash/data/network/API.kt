@@ -62,7 +62,8 @@ interface API {
 
     @GET("/collections")
     suspend fun getCollections(
-        @Header("Authorization") request: String? = "Client-ID ${Constants.CLIENT_ID}"
+        @Header("Authorization") request: String? = "Client-ID ${Constants.CLIENT_ID}",
+        @Query("page") page: Int
     ): List<CollectionDTO>?
 
     @GET("/collections/{id}")

@@ -43,7 +43,7 @@ class HomeViewModel @Inject constructor(
 
     var photos: Flow<PagingData<PhotosDTO>> =
         Pager(
-            config = PagingConfig(30),
+            config = PagingConfig(10),
             initialKey = null,
             pagingSourceFactory = { HomeAdapterPagingSource(getHomePhotosUseCase) }
         ).flow.cachedIn(viewModelScope)

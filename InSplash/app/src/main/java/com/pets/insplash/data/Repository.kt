@@ -2,12 +2,17 @@ package com.pets.insplash.data
 
 import com.pets.insplash.data.network.NetworkClient
 import com.pets.insplash.entity.dto.AuthInfoDTO
+import com.pets.insplash.entity.dto.CollectionDTO
 import com.pets.insplash.entity.dto.OnePhotoDTO
 import com.pets.insplash.entity.dto.PhotosDTO
 import com.pets.insplash.entity.dto.TokenBodyDTO
 import javax.inject.Inject
 
 class Repository @Inject constructor(private val client: NetworkClient) {
+
+    suspend fun getCollections(page: Int): List<CollectionDTO>? {
+        return client.request.getCollections(page = page)
+    }
 
     suspend fun sendLike(photoId: String) {
         client.request.likePhoto(id = photoId)

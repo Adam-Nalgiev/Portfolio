@@ -22,6 +22,7 @@
     <string name="error">Ошибка: </string>
     <string name="share">Отправить в:</string>
     <string name="download_started">Загрузка началась</string>
+    <string name="photos">фотографий</string>
 
     <string name="description_profile_image">Фотография профиля</string>
     <string name="description_like_image_button">Лайкнуть фотографию</string>

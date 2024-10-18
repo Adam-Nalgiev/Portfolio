@@ -24,5 +24,3 @@ data class OnePhotoDTO(
     override val user: UserDTO,
 
     ) : OnePhoto
-
-

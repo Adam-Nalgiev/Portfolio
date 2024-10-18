@@ -4,7 +4,6 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.pets.insplash.domain.GetCollectionsUseCase
 import com.pets.insplash.entity.dto.CollectionDTO
-import javax.inject.Inject
 
 class CollectionsAdapterPagingSource (
     private val getCollectionsUseCase: GetCollectionsUseCase

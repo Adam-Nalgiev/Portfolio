@@ -83,6 +83,9 @@ class OpenedPhotoFragment : Fragment() {
             }
         }
 
+        binding.buttonBack.setOnClickListener{
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     override fun onDestroy() {

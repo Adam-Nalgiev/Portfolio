@@ -1,4 +1,4 @@
-package com.pets.insplash.presentation.home.adapter
+package com.pets.insplash.presentation.photosAdapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.pets.insplash.entity.dto.PhotosDTO

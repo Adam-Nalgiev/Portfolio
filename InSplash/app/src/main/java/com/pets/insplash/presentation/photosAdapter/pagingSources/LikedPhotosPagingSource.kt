@@ -1,12 +1,12 @@
-package com.pets.insplash.presentation.home.adapter
+package com.pets.insplash.presentation.photosAdapter.pagingSources
 
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.pets.insplash.domain.GetHomePhotosUseCase
+import com.pets.insplash.domain.GetLikedPhotosUseCase
 import com.pets.insplash.entity.dto.PhotosDTO
 
-class HomeAdapterPagingSource(private val getHomePhotosUseCase: GetHomePhotosUseCase) : PagingSource<Int, PhotosDTO>() {
+class LikedPhotosPagingSource(private val getLikedPhotosUseCase: GetLikedPhotosUseCase, private val username: String) : PagingSource<Int, PhotosDTO>() {
 
     override fun getRefreshKey(state: PagingState<Int, PhotosDTO>): Int = 1
 
@@ -14,15 +14,15 @@ class HomeAdapterPagingSource(private val getHomePhotosUseCase: GetHomePhotosUse
         val page = params.key ?: 1
 
         return runCatching {
-            getHomePhotosUseCase.execute(page)
+            getLikedPhotosUseCase.execute(username, page)
         }.fold(
             onFailure = {
-                Log.d("PAGING SOURCE", "FAIL $it")
+                Log.d("PAGING Liked SOURCE", "FAIL $it")
                 LoadResult.Error(it)
             },
             onSuccess = {
                 return if (it != null) {
-                    Log.d("PAGING SOURCE", "SUCCESS $it")
+                    Log.d("PAGING liked SOURCE", "SUCCESS $it")
                     LoadResult.Page(
                         data = it,
                         nextKey = page + 1,

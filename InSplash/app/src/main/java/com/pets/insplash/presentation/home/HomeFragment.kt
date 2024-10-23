@@ -24,7 +24,7 @@ import com.pets.insplash.databinding.FragmentHomeBinding
 import com.pets.insplash.entity.constants.Constants
 import com.pets.insplash.entity.presentationModels.ClickAction
 import com.pets.insplash.entity.presentationModels.ImageDataModel
-import com.pets.insplash.presentation.home.adapter.HomeAdapter
+import com.pets.insplash.presentation.photosAdapter.PhotosAdapter
 import com.pets.insplash.presentation.home.viewModel.HomeViewModel
 import com.pets.insplash.presentation.home.viewModel.HomeViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val adapter: HomeAdapter = HomeAdapter { action, id -> onClick(action, id) }
+    private val adapter: PhotosAdapter = PhotosAdapter { action, id -> onClick(action, id) }
 
     @Inject
     lateinit var viewModelFactory: HomeViewModelFactory

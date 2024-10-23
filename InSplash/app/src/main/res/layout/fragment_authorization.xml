@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/aladin"
         android:text="@string/app_name"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/img_splash"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

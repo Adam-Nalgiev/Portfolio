@@ -3,6 +3,7 @@ package com.pets.insplash.presentation.authorization.viewModel
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -62,6 +63,7 @@ class AuthorizationViewModel @Inject constructor(private val getTokenUseCase: Ge
     }
 
     private fun saveToken(context: Context, token: String) {
+        Log.d("TOKEN", token)
         val masterKeys = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
         val encryptedSharedPreferences = EncryptedSharedPreferences.create(
             Constants.KEY_ENCRYPTED_SHARED_PREF,

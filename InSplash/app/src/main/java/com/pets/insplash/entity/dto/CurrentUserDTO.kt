@@ -1,6 +1,7 @@
 package com.pets.insplash.entity.dto
 
 import com.pets.insplash.entity.entities.CurrentUser
+import com.pets.insplash.entity.entities.ProfileImage
 
 data class CurrentUserDTO(
 
@@ -21,5 +22,5 @@ data class CurrentUserDTO(
     override val uploads_remaining: Int,
     override val email: String?,
     override val links: LinksDTO,
-
+    override val profile_image: ProfileImageDTO
     ) : CurrentUser

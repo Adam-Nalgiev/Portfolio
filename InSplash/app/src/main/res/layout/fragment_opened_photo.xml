@@ -60,7 +60,7 @@
             app:layout_constraintEnd_toEndOf="@+id/image" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/location_icon"
+            android:id="@+id/image_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -70,14 +70,14 @@
             app:layout_constraintTop_toBottomOf="@id/image" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/location"
+            android:id="@+id/text_location"
             style="@style/TextAppearance.AppCompat.BasicTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:clickable="true"
-            app:layout_constraintBottom_toBottomOf="@id/location_icon"
-            app:layout_constraintStart_toEndOf="@id/location_icon" />
+            app:layout_constraintBottom_toBottomOf="@id/image_location"
+            app:layout_constraintStart_toEndOf="@id/image_location" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tags"
@@ -87,7 +87,7 @@
             android:layout_margin="16dp"
             android:textColor="@color/gray"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@+id/location" />
+            app:layout_constraintTop_toBottomOf="@+id/text_location" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/val_made_with"

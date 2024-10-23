@@ -12,7 +12,7 @@ data class OnePhotoDTO(
     override val color: String,
     override val blur_hash: String,
     override val likes: Int,
-    override val liked_by_user: Boolean,
+    override val liked_by_user: Boolean? = false,
     override val description: String,
     override val downloads: Int,
     override val public_domain: Boolean,

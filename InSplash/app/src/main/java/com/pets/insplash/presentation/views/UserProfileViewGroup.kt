@@ -35,7 +35,7 @@ class UserProfileViewGroup
     }
 
     fun setUserLogin(login: String) {
-        binding.login.text = login
+        binding.textLogin.text = login
     }
 
 }

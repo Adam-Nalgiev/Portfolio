@@ -1,4 +1,4 @@
-package com.pets.insplash.presentation.home.adapter
+package com.pets.insplash.presentation.photosAdapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,17 +10,17 @@ import com.pets.insplash.entity.dto.PhotosDTO
 import com.pets.insplash.entity.presentationModels.ClickAction
 import javax.inject.Inject
 
-class HomeAdapter @Inject constructor(private val onClick: (ClickAction, String) -> Unit) :
-    PagingDataAdapter<PhotosDTO, HomeAdapterViewHolder>(DiffUtilCallback()) {
+class PhotosAdapter @Inject constructor(private val onClick: (ClickAction, String) -> Unit) :
+    PagingDataAdapter<PhotosDTO, PhotosViewHolder>(DiffUtilCallback()) {
 
     private lateinit var bind: ItemPhotosBinding
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeAdapterViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotosViewHolder {
         bind = ItemPhotosBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return HomeAdapterViewHolder(bind)
+        return PhotosViewHolder(bind)
     }
 
-    override fun onBindViewHolder(holder: HomeAdapterViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PhotosViewHolder, position: Int) {
         val item = getItem(position)!!
         with(holder.binding) {
             item.let {

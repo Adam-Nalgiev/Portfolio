@@ -39,7 +39,7 @@ class CollectionsAdapter @Inject constructor(private val onClick: (String) -> Un
 
                 setImage(holder.binding, it.cover_photo.urls.regular)
 
-                Log.d("COLLECTIONS", "${it.cover_photo.urls.full}")
+                Log.d("COLLECTIONS", "${it.cover_photo.urls.regular}")
 
                 textPhotosCount.text = photosCount.toString()
 
@@ -67,7 +67,7 @@ class CollectionsAdapter @Inject constructor(private val onClick: (String) -> Un
                     target: Target<Drawable>?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    binding.root.isVisible = false
+                    binding.root.visibility = View.GONE
                     binding.progressCircular.visibility = View.GONE
                     return false
                 }
@@ -83,7 +83,7 @@ class CollectionsAdapter @Inject constructor(private val onClick: (String) -> Un
                     return false
                 }
             }
-        ).into(binding.image)
+        ).centerCrop().into(binding.image)
     }
 
 }

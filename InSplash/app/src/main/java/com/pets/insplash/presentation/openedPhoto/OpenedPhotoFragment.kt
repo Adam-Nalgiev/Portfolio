@@ -144,11 +144,11 @@ class OpenedPhotoFragment : Fragment() {
         val userProfileImage = data.user.profile_image?.medium ?: ""
         val username = data.user.name
         val login = data.user.username
-        val isLiked = data.liked_by_user
+        val isLiked = data.liked_by_user ?: false
         val likesCount = data.likes
 
         with(binding) {
-            location.text = locationString
+            textLocation.text = locationString
             tags.text = tagsString
             valMadeWith.text = madeWith
             valModel.text = model

@@ -7,7 +7,7 @@
     tools:context=".presentation.profile.ProfileFragment">
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/exit_button"
+        android:id="@+id/button_exit"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_margin="8dp"
@@ -19,56 +19,72 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/logo"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_margin="16dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/icon_user_profile"
+        android:id="@+id/image_profile"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/username"
-        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+    <LinearLayout
+        android:id="@+id/view_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textSize="22sp"
-        app:layout_constraintStart_toEndOf="@+id/logo"
-        app:layout_constraintTop_toTopOf="@+id/logo" />
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_profile">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_first_name"
+            style="@style/TextAppearance.AppCompat.BoldTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_last_name"
+            style="@style/TextAppearance.AppCompat.BoldTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/text_login"
+        style="@style/TextAppearance.AppCompat.SmallTextStyle"
         android:textColor="@color/gray"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@id/username"
-        app:layout_constraintTop_toBottomOf="@id/username" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/view_user_name"
+        app:layout_constraintStart_toStartOf="@+id/view_user_name"
+        app:layout_constraintTop_toBottomOf="@+id/view_user_name" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/description"
+        android:id="@+id/text_description"
         style="@style/TextAppearance.AppCompat.BasicTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/login"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_login" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/location_icon"
+        android:id="@+id/image_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="6dp"
         android:src="@drawable/icon_location"
-        app:layout_constraintStart_toStartOf="@+id/description"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
+        app:layout_constraintStart_toStartOf="@id/text_description"
+        app:layout_constraintTop_toBottomOf="@id/text_description" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/location"
+        android:id="@+id/text_location"
         style="@style/TextAppearance.AppCompat.BasicTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,65 +92,66 @@
         android:layout_marginTop="6dp"
         android:clickable="true"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@id/location_icon"
-        app:layout_constraintStart_toEndOf="@id/location_icon" />
+        app:layout_constraintBottom_toBottomOf="@id/image_location"
+        app:layout_constraintStart_toEndOf="@id/image_location" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/email_icon"
+        android:id="@+id/image_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="6dp"
         android:src="@drawable/icon_email"
-        app:layout_constraintStart_toStartOf="@+id/location_icon"
-        app:layout_constraintTop_toBottomOf="@+id/location_icon" />
+        app:layout_constraintStart_toStartOf="@id/image_location"
+        app:layout_constraintTop_toBottomOf="@id/image_location" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/email"
+        android:id="@+id/text_email"
         style="@style/TextAppearance.AppCompat.BasicTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/email_icon"
-        app:layout_constraintStart_toEndOf="@id/email_icon" />
+        app:layout_constraintBottom_toBottomOf="@id/image_email"
+        app:layout_constraintStart_toEndOf="@id/image_email"
+        app:layout_constraintTop_toTopOf="@+id/image_email" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/downloads_icon"
+        android:id="@+id/image_downloads"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:src="@drawable/icon_download"
-        app:layout_constraintStart_toStartOf="@id/email_icon"
-        app:layout_constraintTop_toBottomOf="@id/email_icon" />
+        app:layout_constraintStart_toStartOf="@id/image_email"
+        app:layout_constraintTop_toBottomOf="@id/image_email" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/downloads"
+        android:id="@+id/text_downloads"
         style="@style/TextAppearance.AppCompat.BasicTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
-        app:layout_constraintBottom_toBottomOf="@id/downloads_icon"
-        app:layout_constraintStart_toEndOf="@id/downloads_icon" />
+        app:layout_constraintBottom_toBottomOf="@id/image_downloads"
+        app:layout_constraintStart_toEndOf="@id/image_downloads"
+        app:layout_constraintTop_toTopOf="@+id/image_downloads" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerLikedPhotos"
+        android:id="@+id/recycler_photos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginStart="4dp"
         android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/downloads_icon"
+        app:layout_constraintTop_toBottomOf="@id/image_downloads"
         app:spanCount="2" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/empty_list_text"
+        android:id="@+id/text_empty_list"
         style="@style/TextAppearance.AppCompat.BasicTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -143,57 +160,66 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/downloads_icon" />
+        app:layout_constraintTop_toBottomOf="@id/image_downloads" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/confirmation_bar"
+        android:id="@+id/view_confirmation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="60dp"
-        android:background="@color/gray"
+        android:layout_marginBottom="8dp"
+        android:background="@color/white"
+        android:minHeight="140dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/confirmation_text"
+            android:id="@+id/text_confirmation"
             style="@style/TextAppearance.AppCompat.BasicTextStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:textSize="20sp"
             android:text="@string/exit_confirmation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/cancel_button"
-            style="@style/TextAppearance.AppCompat.BasicTextStyle"
-            android:layout_width="wrap_content"
+            android:id="@+id/button_cancel"
+            style="@style/Base.Widget.AppCompat.Button.LightButton"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:text="@string/cancel"
             android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/confirmation_text" />
+            app:layout_constraintTop_toBottomOf="@id/text_confirmation" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/logout_button"
-            style="@style/TextAppearance.AppCompat.BasicTextStyle"
-            android:layout_width="wrap_content"
+            android:id="@+id/button_logout"
+            style="@style/Base.Widget.AppCompat.Button.BlackButton"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:text="@string/exit"
-            android:textAllCaps="false"
-            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/confirmation_text" />
+            app:layout_constraintTop_toBottomOf="@id/text_confirmation" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        style="@style/Base.Widget.AppCompat.ProgressBar.BaseStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_photos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

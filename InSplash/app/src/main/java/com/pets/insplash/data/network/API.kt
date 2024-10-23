@@ -18,9 +18,10 @@ import retrofit2.http.Query
 
 interface API {
     @GET("/users/{username}/likes")
-    suspend fun getUsersLikedPhotos(
+    suspend fun getLikedPhotos(
         @Header("Authorization") request: String? = "Client-ID ${Constants.CLIENT_ID}",
-        @Path("username") username: String
+        @Path("username") username: String,
+        @Query("page") page: Int
     ): List<LikedPhotosDTO>?
 
     @POST("/photos/{id}/like")
@@ -74,7 +75,7 @@ interface API {
 
     @GET("/me")
     suspend fun getProfile(
-        @Header("Authorization") request: String? = "Client-ID ${Constants.CLIENT_ID}"
+        @Header("Authorization") request: String
     ): CurrentUserDTO?
 
     @GET("/photos/random")

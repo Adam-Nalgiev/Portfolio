@@ -17,7 +17,7 @@ interface OnePhoto {
     val color: String
     val blur_hash: String
     val likes: Int
-    val liked_by_user: Boolean
+    val liked_by_user: Boolean?
     val description: String
     val downloads: Int
     val public_domain: Boolean

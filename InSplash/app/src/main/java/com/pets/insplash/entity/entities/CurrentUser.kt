@@ -22,5 +22,5 @@ interface CurrentUser {
     val uploads_remaining: Int
     val email: String?
     val links: LinksDTO
-
+    val profile_image: ProfileImage
 }

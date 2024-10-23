@@ -20,8 +20,8 @@ import com.pets.insplash.entity.constants.Constants
 import com.pets.insplash.entity.dto.OnePhotoDTO
 import com.pets.insplash.entity.dto.PhotosDTO
 import com.pets.insplash.entity.presentationModels.ImageDataModel
-import com.pets.insplash.presentation.home.adapter.HomeAdapterPagingSource
-import com.pets.insplash.presentation.home.adapter.HomeAdapterSearchPagingSource
+import com.pets.insplash.presentation.photosAdapter.pagingSources.PhotosPagingSource
+import com.pets.insplash.presentation.photosAdapter.pagingSources.FoundPhotosPagingSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
@@ -45,7 +45,7 @@ class HomeViewModel @Inject constructor(
         Pager(
             config = PagingConfig(10),
             initialKey = null,
-            pagingSourceFactory = { HomeAdapterPagingSource(getHomePhotosUseCase) }
+            pagingSourceFactory = { PhotosPagingSource(getHomePhotosUseCase) }
         ).flow.cachedIn(viewModelScope)
 
     init {
@@ -79,13 +79,13 @@ class HomeViewModel @Inject constructor(
             Pager(
                 config = PagingConfig(30),
                 initialKey = null,
-                pagingSourceFactory = { HomeAdapterPagingSource(getHomePhotosUseCase) }
+                pagingSourceFactory = { PhotosPagingSource(getHomePhotosUseCase) }
             ).flow.cachedIn(viewModelScope)
         } else {
             Pager(
                 config = PagingConfig(30),
                 initialKey = null,
-                pagingSourceFactory = { HomeAdapterSearchPagingSource(getFoundPhotosUseCase, requestText) }
+                pagingSourceFactory = { FoundPhotosPagingSource(getFoundPhotosUseCase, requestText) }
             ).flow.cachedIn(viewModelScope)
         }
     }
@@ -108,7 +108,7 @@ class HomeViewModel @Inject constructor(
                 username = dto.user.name,
                 userLogin = dto.user.username,
                 likesCount = dto.likes,
-                isLikedByUser = dto.liked_by_user
+                isLikedByUser = dto.liked_by_user ?: false
             )
         } else {
             val photo = getPhoto()
@@ -120,7 +120,7 @@ class HomeViewModel @Inject constructor(
                     username = photo.user.name,
                     userLogin = photo.user.username,
                     likesCount = photo.likes,
-                    isLikedByUser = photo.liked_by_user
+                    isLikedByUser = photo.liked_by_user ?: false
                 )
             } else {
                 return null

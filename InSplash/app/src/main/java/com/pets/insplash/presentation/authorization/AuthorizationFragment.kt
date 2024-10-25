@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -43,9 +45,12 @@ class AuthorizationFragment : Fragment() {
         val progressBar = binding.progressBarLoading
 
         binding.buttonLogIn.setOnClickListener {
-
             viewModel.openBrowser(requireContext())
             progressBar.isVisible = true
+        }
+
+        binding.buttonClose.setOnClickListener {
+            hideGreetings()
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -65,6 +70,8 @@ class AuthorizationFragment : Fragment() {
                 }
             }
         }
+
+        showGreetings()
     }
 
     override fun onResume() {
@@ -78,4 +85,24 @@ class AuthorizationFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
+
+    private fun showGreetings() {
+        binding.viewMessage.animate()
+            .setStartDelay(300)
+            .setDuration(2000)
+            .alpha(1f)
+            .setInterpolator(AccelerateInterpolator())
+            .withStartAction { binding.viewMessage.visibility = View.VISIBLE }
+            .start()
+    }
+
+    private fun hideGreetings() {
+        binding.viewMessage.animate()
+            .setDuration(1000)
+            .setInterpolator(DecelerateInterpolator())
+            .alpha(0f)
+            .withEndAction { binding.viewMessage.visibility = View.GONE }
+            .start()
+    }
+
 }

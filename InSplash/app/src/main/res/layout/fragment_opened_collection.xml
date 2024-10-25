@@ -6,12 +6,88 @@
     android:layout_height="match_parent"
     tools:context=".presentation.openedCollection.OpenedCollectionFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/view_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/button_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/description_back_button"
+            android:src="@drawable/icon_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_title"
+            style="@style/TextAppearance.AppCompat.BoldTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:gravity="center"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/button_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_description"
+            style="@style/TextAppearance.AppCompat.BasicTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_back" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_by"
+            style="@style/TextAppearance.AppCompat.BasicTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/text_by_author_value"
+            app:layout_constraintEnd_toStartOf="@+id/text_by_author_value" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_by_author_value"
+            style="@style/TextAppearance.AppCompat.BasicTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_description" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerPhotosOfCollection"
+        android:id="@+id/recyclerCollectionsPhotos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_header" />
+
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        style="@style/Base.Widget.AppCompat.ProgressBar.BaseStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/recyclerCollectionsPhotos"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerCollectionsPhotos"
+        app:layout_constraintStart_toStartOf="@+id/recyclerCollectionsPhotos"
+        app:layout_constraintTop_toBottomOf="@+id/view_header" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

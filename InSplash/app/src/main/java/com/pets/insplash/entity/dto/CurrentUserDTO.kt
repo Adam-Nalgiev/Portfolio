@@ -1,7 +1,6 @@
 package com.pets.insplash.entity.dto
 
 import com.pets.insplash.entity.entities.CurrentUser
-import com.pets.insplash.entity.entities.ProfileImage
 
 data class CurrentUserDTO(
 

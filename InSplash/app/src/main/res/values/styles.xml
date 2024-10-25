@@ -31,7 +31,7 @@
     <style name="Base.Widget.AppCompat.Button.ButtonLogInStyle">
         <item name="textAllCaps">false</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/background_button_dark</item>
+        <item name="android:background">@drawable/background_dark</item>
         <item name="font">@font/aladin</item>
         <item name="android:textSize">24sp</item>
     </style>
@@ -39,7 +39,7 @@
     <style name="Base.Widget.AppCompat.Button.BlackButton">
         <item name="textAllCaps">false</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/background_button_dark</item>
+        <item name="android:background">@drawable/background_dark</item>
         <item name="font">@font/roboto</item>
         <item name="android:textSize">16sp</item>
     </style>
@@ -47,7 +47,7 @@
     <style name="Base.Widget.AppCompat.Button.LightButton">
         <item name="textAllCaps">false</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/background_button_light</item>
+        <item name="android:background">@drawable/background_light</item>
         <item name="font">@font/roboto</item>
         <item name="android:textSize">16sp</item>
     </style>

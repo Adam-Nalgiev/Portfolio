@@ -217,7 +217,7 @@
         style="@style/Base.Widget.AppCompat.ProgressBar.BaseStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/recycler_photos"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler_photos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_login" />

@@ -27,7 +27,6 @@ import com.pets.insplash.presentation.photosAdapter.PhotosAdapter
 import com.pets.insplash.presentation.profile.viewModel.ProfileViewModel
 import com.pets.insplash.presentation.profile.viewModel.ProfileViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

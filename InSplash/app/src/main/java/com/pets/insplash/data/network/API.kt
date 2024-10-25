@@ -58,7 +58,8 @@ interface API {
     @GET("/collections/{id}/photos")
     suspend fun getCollectionPhotos(
         @Header("Authorization") request: String? = "Client-ID ${Constants.CLIENT_ID}",
-        @Path("id") id: String
+        @Path("id") id: String,
+        @Query("page") page: Int
     ): List<PhotosDTO>?
 
     @GET("/collections")
@@ -66,12 +67,6 @@ interface API {
         @Header("Authorization") request: String? = "Client-ID ${Constants.CLIENT_ID}",
         @Query("page") page: Int
     ): List<CollectionDTO>?
-
-    @GET("/collections/{id}")
-    suspend fun getOneCollection(
-        @Header("Authorization") request: String? = "Client-ID ${Constants.CLIENT_ID}",
-        @Path("id") id: String
-    ): CollectionDTO?
 
     @GET("/me")
     suspend fun getProfile(

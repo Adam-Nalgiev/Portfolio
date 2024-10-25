@@ -55,4 +55,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <FrameLayout
+        android:id="@+id/view_message"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="32dp"
+        android:alpha="0"
+        android:background="@drawable/background_white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/button_log_in"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/button_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/cancel"
+            android:padding="4dp"
+            android:src="@drawable/icon_cross"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_greetings"
+            style="@style/TextAppearance.AppCompat.BoldTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:layout_marginTop="8dp"
+            android:gravity="start"
+            android:text="@string/greetings"
+            android:textSize="24sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_description"
+            style="@style/TextAppearance.AppCompat.BasicTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:gravity="start"
+            android:text="@string/start_description" />
+
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

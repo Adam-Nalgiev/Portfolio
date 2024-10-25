@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -59,7 +58,7 @@ class CollectionsAdapter @Inject constructor(private val onClick: (String) -> Un
 
     private fun setImage(binding:ItemCollectionBinding, link: String?) {
 
-        Glide.with(binding.image).load(link).centerCrop().listener(
+        Glide.with(binding.image).load(link).listener(
             object : RequestListener<Drawable> {
                 override fun onLoadFailed(
                     e: GlideException?,
@@ -67,7 +66,7 @@ class CollectionsAdapter @Inject constructor(private val onClick: (String) -> Un
                     target: Target<Drawable>?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    binding.root.visibility = View.GONE
+                    //binding.root.visibility = View.GONE
                     binding.progressCircular.visibility = View.GONE
                     return false
                 }

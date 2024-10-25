@@ -51,6 +51,10 @@ class OpenedPhotoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val id = arguments?.getString(Constants.KEY_BUNDLE_PHOTO_ID) ?: ""
 
+        binding.buttonBack.setOnClickListener{
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             val photo = viewModel.getPhoto(id)
             if (photo != null) {
@@ -81,10 +85,6 @@ class OpenedPhotoFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-        }
-
-        binding.buttonBack.setOnClickListener{
-            requireActivity().onBackPressedDispatcher.onBackPressed()
         }
     }
 

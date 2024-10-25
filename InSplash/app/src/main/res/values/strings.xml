@@ -23,12 +23,26 @@
     <string name="share">Share to:</string>
     <string name="download_started">Download has started</string>
     <string name="photos">photos</string>
+    <string name="by">by </string>
+    <string name="greetings" translatable="false">Добро пожаловать!</string>
+    <string name="start_description" translatable="false">
+        Для начала пользования приложением нужно кое-что прояснить:
+        \n- Бесплатный сервер ограничивает количество запросов до 50 в час. На самом деле это мало, поэтому будьте экономны.
+        \n- К сожалению, для получения доступа к фотографиям коллекции нужно иметь платную подписку.
+        \n- Авторизация на сервисе необходима для пользования.
+        \n- Приложение все еще в разработке/доработке.
+        \n- Приложению, возможно, нехватает протестированности на разных экранах. Верстка производилась под экран Pixel 7 pro.
+        \n- Подробности о проекте и стеке можете узнать в соответсвующем Readme - файле в репозитории.
+        \n- Буду очень благодарен если вы оставите свои советы/предложения/рекомендации в разделе \"Discussion\" в репозитории GitHub. Вы, возможно, потратите минуту, но сэкономите мне недели.
+    </string>
+
 
     <string name="description_profile_image">Profile image</string>
     <string name="description_like_image_button">Like photo</string>
     <string name="description_interesting_image">This image can interest you</string>
     <string name="description_exit_button">Logout from account</string>
     <string name="description_share_button">Share</string>
+    <string name="description_back_button">Back</string>
     <string name="description_like">Like/Unlike</string>
 
     <string name="error_auth_process">Error of authorization process. Check your network connection and try again.</string>

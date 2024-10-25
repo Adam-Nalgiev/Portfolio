@@ -20,6 +20,10 @@ class Repository @Inject constructor(private val client: NetworkClient) {
         return client.request.getCollections(page = page)
     }
 
+    suspend fun getCollectionsPhotos(id: String, page: Int): List<PhotosDTO>? {
+        return client.request.getCollectionPhotos(id = id, page = page)
+    }
+
     suspend fun sendLike(photoId: String) {
         client.request.likePhoto(id = photoId)
     }
@@ -55,10 +59,10 @@ class Repository @Inject constructor(private val client: NetworkClient) {
     suspend fun getLikedPhotos(username: String, page: Int): List<PhotosDTO>? {
         val likedPhotos = client.request.getLikedPhotos(username = username, page = page)
 
-        if (likedPhotos == null)
-            return null
+        return if (likedPhotos == null)
+            null
         else
-            return likedPhotosMapper(likedPhotos)
+            likedPhotosMapper(likedPhotos)
     }
 
     private fun likedPhotosMapper(likedPhotos: List<LikedPhotosDTO>): List<PhotosDTO> {

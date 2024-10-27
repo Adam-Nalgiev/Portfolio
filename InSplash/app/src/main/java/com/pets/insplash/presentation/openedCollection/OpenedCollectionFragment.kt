@@ -37,15 +37,14 @@ class OpenedCollectionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val id = arguments?.getString(Constants.KEY_BUNDLE_COLLECTION_ID) ?: ""
-        viewModel.setId(id)
-
         _binding = FragmentOpenedCollectionBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val id = arguments?.getString(Constants.KEY_BUNDLE_COLLECTION_ID) ?: ""
+        viewModel.setId(id)
 
         binding.recyclerCollectionsPhotos.adapter = adapter
 

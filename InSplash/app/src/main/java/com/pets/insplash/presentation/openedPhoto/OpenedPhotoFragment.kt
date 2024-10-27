@@ -74,9 +74,7 @@ class OpenedPhotoFragment : Fragment() {
                 }
 
                 binding.buttonShare.setOnClickListener {
-                    viewLifecycleOwner.lifecycleScope.launch {
-                        share(photoLink)
-                    }
+                    share(photoLink)
                 }
             } else {
                 Toast.makeText(

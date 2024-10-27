@@ -77,7 +77,7 @@ class AuthorizationFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         if (requireActivity().intent != null && requireActivity().intent.action == Intent.ACTION_VIEW) {
-            viewModel.handleDeepLink(requireActivity().intent, requireContext())
+            viewModel.handleDeepLink(requireActivity().intent)
         }
     }
 

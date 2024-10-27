@@ -1,7 +1,6 @@
 package com.pets.insplash.presentation.profile
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -42,12 +41,6 @@ class ProfileFragment : Fragment() {
 
     private val adapter = PhotosAdapter { clickAction, id -> onClick(clickAction, id) }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        viewModel.setSharedPref(context)
-        viewModel.getProfile()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -63,16 +56,11 @@ class ProfileFragment : Fragment() {
         binding.recyclerPhotos.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.photos.collect {
-                adapter.submitData(it)
-            }
-        }
-
-        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.profileFlow.collect {
                 if (it != null) {
-                    with(binding) {
+                    startCollecting()
 
+                    with(binding) {
                         setImage(
                             it.profile_image.large,
                             it.first_name,
@@ -95,7 +83,7 @@ class ProfileFragment : Fragment() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            adapter.loadStateFlow.collect{
+            adapter.loadStateFlow.collect {
                 binding.progressCircular.isVisible = it.source.refresh is LoadState.Loading
             }
         }
@@ -105,7 +93,7 @@ class ProfileFragment : Fragment() {
         }
 
         binding.buttonLogout.setOnClickListener {
-            viewModel.exit(requireContext())
+            viewModel.exit()
             findNavController().navigate(R.id.action_profileFragment_to_authorizationFragment)
         }
 
@@ -174,4 +162,17 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    private fun startCollecting() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.photos.collect {
+                adapter.submitData(it)
+
+                if (adapter.itemCount <= 0) {
+                    binding.textNoPhotos.visibility = View.VISIBLE
+                }else {
+                    binding.textNoPhotos.visibility = View.GONE
+                }
+            }
+        }
+    }
 }

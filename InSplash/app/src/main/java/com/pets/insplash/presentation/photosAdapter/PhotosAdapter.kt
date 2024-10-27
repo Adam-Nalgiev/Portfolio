@@ -28,12 +28,14 @@ class PhotosAdapter @Inject constructor(private val onClick: (ClickAction, Strin
                 val username = it.user.name
                 val login = "@${it.user.username}"
                 val likesCount = it.likes
+                val isLiked = it.liked_by_user ?: false
 
                 viewUserProfile.setImage(profileImageUrl)
                 viewUserProfile.setUsername(username)
                 viewUserProfile.setUserLogin(login)
 
                 viewLikes.setLikesCount(likesCount)
+                viewLikes.setLikesState(isLiked)
 
                 Glide
                     .with(image)

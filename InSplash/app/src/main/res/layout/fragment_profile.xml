@@ -135,28 +135,40 @@
         app:layout_constraintStart_toEndOf="@id/image_downloads"
         app:layout_constraintTop_toTopOf="@+id/image_downloads" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_liked_photos"
+        style="@style/TextAppearance.AppCompat.BasicTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:text="@string/liked_photos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_downloads" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_photos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="4dp"
-        android:orientation="vertical"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="4dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:layout_marginTop="4dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image_downloads"
+        app:layout_constraintTop_toBottomOf="@+id/text_liked_photos"
         app:spanCount="2" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/text_empty_list"
+        android:id="@+id/text_no_photos"
         style="@style/TextAppearance.AppCompat.BasicTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/gray"
         android:visibility="gone"
+        android:text="@string/no_liked_photos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

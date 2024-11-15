@@ -1,4 +1,4 @@
-package com.pets.insplash.presentation.profile.viewModel
+package com.pets.insplash.presentation.profile
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -16,6 +16,7 @@ import com.pets.insplash.domain.SendUnlikeUseCase
 import com.pets.insplash.entity.dto.CurrentUserDTO
 import com.pets.insplash.entity.dto.PhotosDTO
 import com.pets.insplash.presentation.photosAdapter.pagingSources.LikedPhotosPagingSource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,6 +24,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val sendLikeUseCase: SendLikeUseCase,
     private val sendUnlikeUseCase: SendUnlikeUseCase,
@@ -30,7 +32,6 @@ class ProfileViewModel @Inject constructor(
     private val getMyProfileUseCase: GetMyProfileUseCase,
     private val clearSharedPrefUseCase: ClearSharedPrefUseCase,
     private val clearLocalCacheUseCase: ClearLocalCacheUseCase
-
 ) : ViewModel() {
 
     private val _profileFlow = MutableStateFlow<CurrentUserDTO?>(null)

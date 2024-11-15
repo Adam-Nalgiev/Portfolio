@@ -1,4 +1,4 @@
-package com.pets.insplash.presentation.home.viewModel
+package com.pets.insplash.presentation.home
 
 import android.content.Context
 import android.util.Log
@@ -22,6 +22,7 @@ import com.pets.insplash.entity.dto.PhotosDTO
 import com.pets.insplash.entity.presentationModels.ImageDataModel
 import com.pets.insplash.presentation.photosAdapter.pagingSources.PhotosPagingSource
 import com.pets.insplash.presentation.photosAdapter.pagingSources.FoundPhotosPagingSource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
@@ -30,6 +31,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class HomeViewModel @Inject constructor(
     private val sendUnlikeUseCase: SendUnlikeUseCase,
     private val sendLikeUseCase: SendLikeUseCase,
@@ -142,6 +144,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun setImageData(imageData: ImageDataModel, binding: FragmentHomeBinding) {
+        val id = imageData.id
         val isLiked = imageData.isLikedByUser
         val profileImageUrl = imageData.profileImageUrl!!
         val username = imageData.username
@@ -156,7 +159,7 @@ class HomeViewModel @Inject constructor(
 
         with(binding.viewLikes) {
             setLikesCount(likesCount)
-            setLikesState(isLiked)
+            setLikesState(isLiked, id)
         }
     }
 }

@@ -22,11 +22,8 @@ import com.pets.insplash.databinding.FragmentOpenedPhotoBinding
 import com.pets.insplash.entity.constants.Constants
 import com.pets.insplash.entity.dto.OnePhotoDTO
 import com.pets.insplash.presentation.MainActivity
-import com.pets.insplash.presentation.openedPhoto.viewModel.OpenedPhotosViewModel
-import com.pets.insplash.presentation.openedPhoto.viewModel.OpenedPhotosViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class OpenedPhotoFragment : Fragment() {
@@ -34,10 +31,7 @@ class OpenedPhotoFragment : Fragment() {
     private var _binding: FragmentOpenedPhotoBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var viewModelFactory: OpenedPhotosViewModelFactory
-
-    private val viewModel: OpenedPhotosViewModel by viewModels { viewModelFactory }
+    private val viewModel: OpenedPhotosViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -122,7 +116,7 @@ class OpenedPhotoFragment : Fragment() {
     }
 
     private fun setImageData(data: OnePhotoDTO) {
-
+        val id = data.id
         val locationString =
             if (data.location?.country != null && data.location.city != null) {
                 "${data.location.city}, ${data.location.country}"
@@ -163,7 +157,7 @@ class OpenedPhotoFragment : Fragment() {
             viewUserProfile.setUsername(login)
 
             viewLikes.setLikesCount(likesCount)
-            viewLikes.setLikesState(isLiked)
+            viewLikes.setLikesState(isLiked, id)
         }
 
     }

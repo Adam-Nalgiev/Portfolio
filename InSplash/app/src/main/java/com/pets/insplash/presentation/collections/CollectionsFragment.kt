@@ -12,11 +12,8 @@ import com.pets.insplash.R
 import com.pets.insplash.databinding.FragmentCollectionsBinding
 import com.pets.insplash.entity.constants.Constants
 import com.pets.insplash.presentation.collections.adapter.CollectionsAdapter
-import com.pets.insplash.presentation.collections.viewModel.CollectionsViewModel
-import com.pets.insplash.presentation.collections.viewModel.CollectionsViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class CollectionsFragment : Fragment() {
@@ -26,10 +23,7 @@ class CollectionsFragment : Fragment() {
 
     private val adapter = CollectionsAdapter { id -> onClick(id) }
 
-    @Inject
-    lateinit var collectionViewModelFactory: CollectionsViewModelFactory
-
-    private val viewModel: CollectionsViewModel by viewModels { collectionViewModelFactory }
+    private val viewModel: CollectionsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

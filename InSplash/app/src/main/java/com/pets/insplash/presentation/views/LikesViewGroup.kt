@@ -2,16 +2,14 @@ package com.pets.insplash.presentation.views
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import com.bumptech.glide.Glide
 import com.pets.insplash.R
 import com.pets.insplash.databinding.ViewLikesBinding
-import com.pets.insplash.presentation.home.viewModel.HomeViewModelFactory
+import com.pets.insplash.presentation.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class LikesViewGroup
@@ -24,9 +22,13 @@ class LikesViewGroup
     private val binding = ViewLikesBinding.inflate(LayoutInflater.from(context))
     private var isLiked = false
     private var likesCount = 0
+    private var id: String? = null
 
-    @Inject
-    lateinit var viewModelFactory: HomeViewModelFactory
+    @Volatile
+    lateinit var viewModel: HomeViewModel
+
+//    @Inject
+//    lateinit var viewModelFactory: HomeViewModelFactory
 
 //    private val viewModel by lazy {
 //        findViewTreeViewModelStoreOwner()?.let { owner ->
@@ -44,11 +46,12 @@ class LikesViewGroup
 
     fun setLikesCount(count: Int) {
         likesCount = count
-        binding.likes.text = likesCount.toString()
+        binding.likes.text = "$likesCount"
     }
 
-    fun setLikesState(isLikedByUser: Boolean) {
+    fun setLikesState(isLikedByUser: Boolean, photoId: String) {
         isLiked = isLikedByUser
+        id = photoId
 
         if (isLikedByUser) {
             setLike()
@@ -58,6 +61,7 @@ class LikesViewGroup
     }
 
     private fun setLike() {
+        Log.d("LIKE ID", "$id")
         isLiked = true
         setLikesCount(++likesCount)
         Glide.with(context).load(R.drawable.icon_like_active).into(binding.buttonLike)
@@ -72,8 +76,10 @@ class LikesViewGroup
     private fun onClick() {
         if (!isLiked) {
             setLike()
+            if (id != null) viewModel.sendLike(id!!)
         } else {
             setUnlike()
+            if (id != null) viewModel.sendUnlike(id!!)
         }
     }
 

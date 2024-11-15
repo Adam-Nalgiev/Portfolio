@@ -23,11 +23,8 @@ import com.pets.insplash.databinding.FragmentProfileBinding
 import com.pets.insplash.entity.constants.Constants
 import com.pets.insplash.entity.presentationModels.ClickAction
 import com.pets.insplash.presentation.photosAdapter.PhotosAdapter
-import com.pets.insplash.presentation.profile.viewModel.ProfileViewModel
-import com.pets.insplash.presentation.profile.viewModel.ProfileViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
@@ -35,9 +32,7 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var profileViewModelFactory: ProfileViewModelFactory
-    private val viewModel: ProfileViewModel by viewModels { profileViewModelFactory }
+    private val viewModel: ProfileViewModel by viewModels()
 
     private val adapter = PhotosAdapter { clickAction, id -> onClick(clickAction, id) }
 

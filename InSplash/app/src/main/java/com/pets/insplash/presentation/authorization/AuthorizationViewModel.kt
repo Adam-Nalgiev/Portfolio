@@ -1,19 +1,22 @@
-package com.pets.insplash.presentation.authorization.viewModel
+package com.pets.insplash.presentation.authorization
 
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pets.insplash.domain.GetTokenUseCase
 import com.pets.insplash.entity.constants.Constants
 import com.pets.insplash.entity.dto.TokenBodyDTO
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class AuthorizationViewModel @Inject constructor(private val getTokenUseCase: GetTokenUseCase): ViewModel() {
 
     private val _isAuthSuccess = Channel<Boolean>()
@@ -34,7 +37,7 @@ class AuthorizationViewModel @Inject constructor(private val getTokenUseCase: Ge
     }
 
     private fun composeUrl(): Uri =
-        Uri.parse(Constants.AUTHORIZATION_BASE_URL)
+        Uri.parse(Constants.AUTHORIZATION_URL)
             .buildUpon()
             .appendQueryParameter("client_id", Constants.CLIENT_ID)
             .appendQueryParameter("redirect_uri", Constants.REDIRECT_URI)
@@ -48,6 +51,7 @@ class AuthorizationViewModel @Inject constructor(private val getTokenUseCase: Ge
                 getTokenUseCase.execute(TokenBodyDTO(code = authCode))
             }.fold(
                 onFailure = {
+                    Log.d("GET TOKEN", "FAILURE!!!!!")
                     _isAuthSuccess.send(false)
                 },
                 onSuccess = {

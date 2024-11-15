@@ -26,13 +26,13 @@ interface API {
 
     @POST("/photos/{id}/like")
     suspend fun likePhoto(
-        @Header("Authorization") request: String? = "Client-ID ${Constants.CLIENT_ID}",
+        @Header("Authorization") request: String,
         @Path("id") id: String
     ) : LikeUnlikeDTO?
 
     @DELETE("/photos/{id}/like")
     suspend fun unlikePhoto(
-        @Header("Authorization") request: String? = "Client-ID ${Constants.CLIENT_ID}",
+        @Header("Authorization") request: String,
         @Path("id") id: String
     ) : LikeUnlikeDTO?
 

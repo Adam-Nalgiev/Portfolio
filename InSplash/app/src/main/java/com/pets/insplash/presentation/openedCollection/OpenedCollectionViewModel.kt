@@ -1,4 +1,4 @@
-package com.pets.insplash.presentation.openedCollection.viewModel
+package com.pets.insplash.presentation.openedCollection
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -12,11 +12,13 @@ import com.pets.insplash.domain.SendLikeUseCase
 import com.pets.insplash.domain.SendUnlikeUseCase
 import com.pets.insplash.entity.dto.PhotosDTO
 import com.pets.insplash.presentation.photosAdapter.pagingSources.OpenedCollectionPagingSource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class OpenedCollectionViewModel @Inject constructor(
     private val getCollectionsPhotosUseCase: GetCollectionsPhotosUseCase,
     private val sendUnlikeUseCase: SendUnlikeUseCase,

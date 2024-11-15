@@ -25,11 +25,8 @@ import com.pets.insplash.entity.constants.Constants
 import com.pets.insplash.entity.presentationModels.ClickAction
 import com.pets.insplash.entity.presentationModels.ImageDataModel
 import com.pets.insplash.presentation.photosAdapter.PhotosAdapter
-import com.pets.insplash.presentation.home.viewModel.HomeViewModel
-import com.pets.insplash.presentation.home.viewModel.HomeViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -39,10 +36,7 @@ class HomeFragment : Fragment() {
 
     private val adapter: PhotosAdapter = PhotosAdapter { action, id -> onClick(action, id) }
 
-    @Inject
-    lateinit var viewModelFactory: HomeViewModelFactory
-
-    private val viewModel: HomeViewModel by viewModels{ viewModelFactory }
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

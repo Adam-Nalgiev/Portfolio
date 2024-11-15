@@ -19,13 +19,13 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 class Repository @Inject constructor(
-    private val client: NetworkClient,
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val client: NetworkClient
 ) {
 
     suspend fun getMyProfile(): CurrentUserDTO? {
         val token = getEncryptedSharedPref().getString(Constants.KEY_TOKEN, "")
-        return client.request.getProfile("Bearer $token")
+        return client.request.getProfile(request = "Bearer $token")
     }
 
     suspend fun getCollections(page: Int): List<CollectionDTO>? {
@@ -37,11 +37,13 @@ class Repository @Inject constructor(
     }
 
     suspend fun sendLike(photoId: String) {
-        client.request.likePhoto(id = photoId)
+        val token = getEncryptedSharedPref().getString(Constants.KEY_TOKEN, "")
+        client.request.likePhoto(request = "Bearer $token", id = photoId)
     }
 
     suspend fun sendUnlike(photoId: String) {
-        client.request.unlikePhoto(id = photoId)
+        val token = getEncryptedSharedPref().getString(Constants.KEY_TOKEN, "")
+        client.request.unlikePhoto(request = "Bearer $token", id = photoId)
     }
 
     suspend fun getPhoto(id: String): OnePhotoDTO? {
@@ -77,6 +79,7 @@ class Repository @Inject constructor(
 
     suspend fun getToken(tokenBody: TokenBodyDTO): AuthInfoDTO? {
         val token = client.registrationRequest.getAccessToken(tokenData = tokenBody)?.access_token
+        Log.d("TOKEN!!!!", "$token")
         return if (token == null) {
             saveAuthState(false)
             null

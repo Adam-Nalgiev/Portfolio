@@ -1,4 +1,4 @@
-package com.pets.insplash.presentation.openedPhoto.viewModel
+package com.pets.insplash.presentation.openedPhoto
 
 import android.app.DownloadManager
 import android.net.Uri
@@ -9,10 +9,12 @@ import com.pets.insplash.domain.GetPhotoUseCase
 import com.pets.insplash.domain.SendDownloadRequestUseCase
 import com.pets.insplash.entity.dto.OnePhotoDTO
 import com.pets.insplash.entity.dto.TagsDTO
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import javax.inject.Inject
 
+@HiltViewModel
 class OpenedPhotosViewModel @Inject constructor(
     private val getPhotoUseCase: GetPhotoUseCase,
     private val sendDownloadRequestUseCase: SendDownloadRequestUseCase,

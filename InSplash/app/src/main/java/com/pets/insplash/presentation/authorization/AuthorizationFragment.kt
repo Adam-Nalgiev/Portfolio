@@ -15,11 +15,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.pets.insplash.R
 import com.pets.insplash.databinding.FragmentAuthorizationBinding
-import com.pets.insplash.presentation.authorization.viewModel.AuthorizationViewModel
-import com.pets.insplash.presentation.authorization.viewModel.AuthorizationViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class AuthorizationFragment : Fragment() {
@@ -27,10 +24,7 @@ class AuthorizationFragment : Fragment() {
     private var _binding: FragmentAuthorizationBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var viewModelFactory: AuthorizationViewModelFactory
-
-    private val viewModel: AuthorizationViewModel by viewModels { viewModelFactory }
+    private val viewModel: AuthorizationViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

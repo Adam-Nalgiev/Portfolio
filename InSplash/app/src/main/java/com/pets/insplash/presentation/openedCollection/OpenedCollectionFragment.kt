@@ -14,12 +14,9 @@ import com.pets.insplash.R
 import com.pets.insplash.databinding.FragmentOpenedCollectionBinding
 import com.pets.insplash.entity.constants.Constants
 import com.pets.insplash.entity.presentationModels.ClickAction
-import com.pets.insplash.presentation.openedCollection.viewModel.OpenedCollectionViewModel
-import com.pets.insplash.presentation.openedCollection.viewModel.OpenedCollectionViewModelFactory
 import com.pets.insplash.presentation.photosAdapter.PhotosAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class OpenedCollectionFragment : Fragment() {
@@ -27,9 +24,7 @@ class OpenedCollectionFragment : Fragment() {
     private var _binding: FragmentOpenedCollectionBinding? = null
     private val binding get() = _binding!!
 
-    @Inject
-    lateinit var openedCollectionViewModelFactory: OpenedCollectionViewModelFactory
-    private val viewModel: OpenedCollectionViewModel by viewModels { openedCollectionViewModelFactory }
+    private val viewModel: OpenedCollectionViewModel by viewModels()
 
     private val adapter = PhotosAdapter { action, id -> onClick(action, id) }
 

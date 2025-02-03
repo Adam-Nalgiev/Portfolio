@@ -1,5 +1,6 @@
 package com.pets.insplash.presentation.screen.collections.adapter
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
@@ -25,6 +26,7 @@ class CollectionsAdapter @Inject constructor(private val onClick: (String) -> Un
         return CollectionsViewHolder(bind)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CollectionsViewHolder, position: Int) {
         val item = getItem(position)!!
         with(holder.binding) {

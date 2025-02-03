@@ -8,7 +8,7 @@ import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import com.pets.insplash.R
 import com.pets.insplash.databinding.ViewLikesBinding
-import com.pets.insplash.presentation.home.HomeViewModel
+import com.pets.insplash.presentation.screen.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

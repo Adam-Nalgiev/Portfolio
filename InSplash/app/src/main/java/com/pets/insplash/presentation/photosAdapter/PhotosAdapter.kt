@@ -6,12 +6,12 @@ import androidx.paging.PagingDataAdapter
 import com.bumptech.glide.Glide
 import com.pets.insplash.R
 import com.pets.insplash.databinding.ItemPhotosBinding
-import com.pets.insplash.entity.dto.PhotosDTO
-import com.pets.insplash.entity.presentationModels.ClickAction
+import com.pets.insplash.entity.Photos
+import com.pets.insplash.presentation.models.ClickAction
 import javax.inject.Inject
 
 class PhotosAdapter @Inject constructor(private val onClick: (ClickAction, String) -> Unit) :
-    PagingDataAdapter<PhotosDTO, PhotosViewHolder>(DiffUtilCallback()) {
+    PagingDataAdapter<Photos, PhotosViewHolder>(DiffUtilCallback) {
 
     private lateinit var bind: ItemPhotosBinding
 
@@ -51,5 +51,4 @@ class PhotosAdapter @Inject constructor(private val onClick: (ClickAction, Strin
             }
         }
     }
-
 }

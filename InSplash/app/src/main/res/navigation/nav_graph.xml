@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/collectionsFragment"
-        android:name="com.pets.insplash.presentation.collections.CollectionsFragment"
+        android:name="com.pets.insplash.presentation.screen.collections.CollectionsFragment"
         android:label="@string/title_collection"
         tools:layout="@layout/fragment_collections" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.pets.insplash.presentation.home.HomeFragment"
+        android:name="com.pets.insplash.presentation.screen.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/openedCollectionFragment"
-        android:name="com.pets.insplash.presentation.openedCollection.OpenedCollectionFragment"
+        android:name="com.pets.insplash.presentation.screen.openedCollection.OpenedCollectionFragment"
         android:label="fragment_opened_collection"
         tools:layout="@layout/fragment_opened_collection" >
         <action
@@ -40,13 +40,13 @@
     </fragment>
     <fragment
         android:id="@+id/openedPhotoFragment"
-        android:name="com.pets.insplash.presentation.openedPhoto.OpenedPhotoFragment"
+        android:name="com.pets.insplash.presentation.screen.openedPhoto.OpenedPhotoFragment"
         android:label="fragment_opened_photo"
         tools:layout="@layout/fragment_opened_photo" >
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.pets.insplash.presentation.profile.ProfileFragment"
+        android:name="com.pets.insplash.presentation.screen.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -58,7 +58,7 @@
     </fragment>
     <fragment
         android:id="@+id/authorizationFragment"
-        android:name="com.pets.insplash.presentation.authorization.AuthorizationFragment"
+        android:name="com.pets.insplash.presentation.screen.authorization.AuthorizationFragment"
         android:label="fragment_authorization"
         tools:layout="@layout/fragment_authorization" >
         <action

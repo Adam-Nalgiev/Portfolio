@@ -1,7 +1,7 @@
 package com.pets.insplash.data.network
 
-import com.pets.insplash.entity.dto.AuthInfoDTO
-import com.pets.insplash.entity.dto.TokenBodyDTO
+import com.pets.insplash.data.network.dto.AuthInfoDTO
+import com.pets.insplash.data.network.dto.TokenBodyDTO
 import retrofit2.http.Body
 import retrofit2.http.POST
 

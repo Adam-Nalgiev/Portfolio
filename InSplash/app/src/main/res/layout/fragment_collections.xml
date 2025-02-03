@@ -9,7 +9,7 @@
     android:orientation="vertical"
     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
     app:spanCount="1"
-    tools:context=".presentation.collections.CollectionsFragment" />
+    tools:context=".presentation.screen.collections.CollectionsFragment" />
 
 
 

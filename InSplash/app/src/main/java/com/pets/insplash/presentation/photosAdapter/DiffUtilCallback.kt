@@ -1,12 +1,16 @@
 package com.pets.insplash.presentation.photosAdapter
 
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
-import com.pets.insplash.entity.dto.PhotosDTO
+import com.pets.insplash.entity.Photos
 
-class DiffUtilCallback : DiffUtil.ItemCallback<PhotosDTO>() {
+object DiffUtilCallback : DiffUtil.ItemCallback<Photos>() {
 
-    override fun areItemsTheSame(oldItem: PhotosDTO, newItem: PhotosDTO): Boolean = oldItem.id == newItem.id
+    override fun areItemsTheSame(oldItem: Photos, newItem: Photos): Boolean =
+        oldItem.id == newItem.id
 
-    override fun areContentsTheSame(oldItem: PhotosDTO, newItem: PhotosDTO): Boolean = oldItem == newItem
+    @SuppressLint("DiffUtilEquals")
+    override fun areContentsTheSame(oldItem: Photos, newItem: Photos): Boolean =
+        oldItem == newItem
 
 }

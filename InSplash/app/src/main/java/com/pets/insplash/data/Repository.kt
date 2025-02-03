@@ -7,14 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import com.pets.insplash.data.network.NetworkClient
-import com.pets.insplash.entity.constants.Constants
-import com.pets.insplash.entity.dto.AuthInfoDTO
-import com.pets.insplash.entity.dto.CollectionDTO
-import com.pets.insplash.entity.dto.CurrentUserDTO
-import com.pets.insplash.entity.dto.LikedPhotosDTO
-import com.pets.insplash.entity.dto.OnePhotoDTO
-import com.pets.insplash.entity.dto.PhotosDTO
-import com.pets.insplash.entity.dto.TokenBodyDTO
+import com.pets.insplash.data.network.dto.LikedPhotosDTO
+import com.pets.insplash.data.network.dto.PhotosDTO
+import com.pets.insplash.data.network.dto.TokenBodyDTO
+import com.pets.insplash.entity.AuthInfo
+import com.pets.insplash.entity.Collections
+import com.pets.insplash.entity.CurrentUser
+import com.pets.insplash.entity.OnePhoto
+import com.pets.insplash.entity.Photos
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -23,42 +23,42 @@ class Repository @Inject constructor(
     private val client: NetworkClient
 ) {
 
-    suspend fun getMyProfile(): CurrentUserDTO? {
-        val token = getEncryptedSharedPref().getString(Constants.KEY_TOKEN, "")
+    suspend fun getMyProfile(): CurrentUser? {
+        val token = getEncryptedSharedPref().getString(KEY_TOKEN, "")
         return client.request.getProfile(request = "Bearer $token")
     }
 
-    suspend fun getCollections(page: Int): List<CollectionDTO>? {
+    suspend fun getCollections(page: Int): List<Collections>? {
         return client.request.getCollections(page = page)
     }
 
-    suspend fun getCollectionsPhotos(id: String, page: Int): List<PhotosDTO>? {
+    suspend fun getCollectionsPhotos(id: String, page: Int): List<Photos>? {
         return client.request.getCollectionPhotos(id = id, page = page)
     }
 
     suspend fun sendLike(photoId: String) {
-        val token = getEncryptedSharedPref().getString(Constants.KEY_TOKEN, "")
+        val token = getEncryptedSharedPref().getString(KEY_TOKEN, "")
         client.request.likePhoto(request = "Bearer $token", id = photoId)
     }
 
     suspend fun sendUnlike(photoId: String) {
-        val token = getEncryptedSharedPref().getString(Constants.KEY_TOKEN, "")
+        val token = getEncryptedSharedPref().getString(KEY_TOKEN, "")
         client.request.unlikePhoto(request = "Bearer $token", id = photoId)
     }
 
-    suspend fun getPhoto(id: String): OnePhotoDTO? {
+    suspend fun getPhoto(id: String): OnePhoto? {
         return client.request.getOnePhoto(id = id)
     }
 
-    suspend fun getRandomPhoto(): OnePhotoDTO? {
+    suspend fun getRandomPhoto(): OnePhoto? {
         return client.request.getRandomPhoto()
     }
 
-    suspend fun getHomePhotos(page: Int): List<PhotosDTO>? {
+    suspend fun getHomePhotos(page: Int): List<Photos>? {
         return client.request.getHomePhotos(page = page)
     }
 
-    suspend fun getFoundPhotos(searchTerms: String, page: Int): List<PhotosDTO>? {
+    suspend fun getFoundPhotos(searchTerms: String, page: Int): List<Photos>? {
         return client.request.searchPhotos(query = searchTerms, page = page)?.results
     }
 
@@ -66,18 +66,15 @@ class Repository @Inject constructor(
         client.request.downloadPhoto(id = id)
     }
 
-    suspend fun getLikedPhotos(username: String, page: Int): List<PhotosDTO>? {
+    suspend fun getLikedPhotos(username: String, page: Int): List<Photos>? {
         val likedPhotos = client.request.getLikedPhotos(username = username, page = page)
-        Log.d("LIKED PHOTOS", "$likedPhotos")
-        Log.d("LIKED PHOTOS name", username)
-        Log.d("LIKED PHOTOS page", "$page")
         return if (likedPhotos == null)
             null
         else
             likedPhotosMapper(likedPhotos)
     }
 
-    suspend fun getToken(tokenBody: TokenBodyDTO): AuthInfoDTO? {
+    suspend fun getToken(tokenBody: TokenBodyDTO): AuthInfo? {
         val token = client.registrationRequest.getAccessToken(tokenData = tokenBody)?.access_token
         Log.d("TOKEN!!!!", "$token")
         return if (token == null) {
@@ -90,6 +87,10 @@ class Repository @Inject constructor(
         }
     }
 
+    fun getAuthState(): Boolean {
+        return getSharedPref().getBoolean(KEY_IS_AUTHORIZED, false)
+    }
+
     fun clearSharedPrefs() {
         getSharedPref().edit().clear().apply()
         getEncryptedSharedPref().edit().clear().apply()
@@ -100,7 +101,7 @@ class Repository @Inject constructor(
         context.deleteFile(cacheName)
     }
 
-    private fun likedPhotosMapper(likedPhotos: List<LikedPhotosDTO>): List<PhotosDTO> {
+    private fun likedPhotosMapper(likedPhotos: List<LikedPhotosDTO>): List<Photos> {
         return likedPhotos.map {
             PhotosDTO(
                 id = it.id,
@@ -115,7 +116,7 @@ class Repository @Inject constructor(
 
     private fun getSharedPref(): SharedPreferences {
         return context.getSharedPreferences(
-            Constants.KEY_APP_SHARED_PREF,
+            KEY_APP_SHARED_PREF,
             AppCompatActivity.MODE_PRIVATE
         )
     }
@@ -123,7 +124,7 @@ class Repository @Inject constructor(
     private fun getEncryptedSharedPref(): SharedPreferences {
         val masterKeys = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
         return EncryptedSharedPreferences.create(
-            Constants.KEY_ENCRYPTED_SHARED_PREF,
+            KEY_ENCRYPTED_SHARED_PREF,
             masterKeys,
             context,
             EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
@@ -133,13 +134,20 @@ class Repository @Inject constructor(
 
     private fun saveToken(token: String) {
         getEncryptedSharedPref().edit()
-            .putString(Constants.KEY_TOKEN, token)
+            .putString(KEY_TOKEN, token)
             .apply()
     }
 
     private fun saveAuthState(state: Boolean) {
         getSharedPref().edit()
-            .putBoolean(Constants.KEY_IS_AUTHORIZED, state)
+            .putBoolean(KEY_IS_AUTHORIZED, state)
             .apply()
+    }
+
+    companion object {
+        private const val KEY_TOKEN = "App token"
+        private const val KEY_APP_SHARED_PREF = "InSplash shared preferences"
+        private const val KEY_ENCRYPTED_SHARED_PREF = "Secret data"
+        private const val KEY_IS_AUTHORIZED = "Is authorized"
     }
 }
